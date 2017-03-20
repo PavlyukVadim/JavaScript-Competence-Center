@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	  'use strict';
+    
+    const arr = [1, 2, 31, 24, -67, 5, 3, 555, 79, -4, 21, 33, 89, -90];
+
+		
+		function findMaxAndMin(arr) {
+      return {
+      	max: Math.max(...arr),
+      	min: Math.min(...arr)
+      }
+		}
+
+		
+		function findPositiveEvenNumbers(arr) {
+      return arr.filter((number) => number > 0 && !(number % 2));
+		}
+    
+    
+    alert('Max: ' + findMaxAndMin(arr).max + '\n' +
+    	    'Min: ' + findMaxAndMin(arr).min);
+    alert('PositiveEvenNumbers: ' + findPositiveEvenNumbers(arr));
+
+	</script>
+</body>
+</html>
