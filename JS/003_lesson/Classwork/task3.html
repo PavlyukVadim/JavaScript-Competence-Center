@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2</title>
+</head>
+<body>
+	<script>
+		function Summator() {
+			this.sum = function(a, b) {
+        return a + b;
+			}
+			this.run = function() {
+        alert('Sum = ' + this.sum(+prompt('A') || 0, +prompt('B') || 0));
+			}
+		}
+		new Summator().run();
+		
+	</script>
+</body>
+</html>
