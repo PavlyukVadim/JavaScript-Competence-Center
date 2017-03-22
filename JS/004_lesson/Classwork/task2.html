@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2</title>
+</head>
+<body>
+	<script>
+  /*function bind(func, context) {
+		  return function() {
+		    return func.apply(context, arguments);
+		  };
+		}
+
+		var user = {
+		  firstName: "Вася",
+		  sayHi: function() {
+		    alert( this.firstName );
+		  }
+		}; 
+
+		var f = bind(user.sayHi, user);  
+		f(); */
+
+    var user = {
+		  firstName: "Вася",
+		  sayHi: function() {
+		    alert( this.firstName );
+		  }
+		}; 
+
+		var f = user.sayHi.bind(user);  
+		f();
+
+	</script>
+</body>
+</html>
