@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <style>
+  	#target {
+      background-color: red;
+  	}
+  	p {
+  		background-color: green;
+  		padding: 20px 0;
+  		margin: 0; 
+  	}
+  	span {
+      color: blue;
+  	}
+  </style>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut explicabo ipsam officiis pariatur quaerat cumque quam nesciunt temporibus magni adipisci, in reprehenderit voluptatum ab eius animi laboriosam esse, perferendis totam?</p>
+	<p id="target">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit molestias vero a animi id minus non, harum iste! Aut obcaecati veritatis commodi ipsum cum eius, iure reiciendis, laudantium neque aperiam?</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut explicabo ipsam officiis pariatur quaerat cumque quam nesciunt temporibus magni adipisci, in reprehenderit voluptatum ab eius animi laboriosam esse, perferendis totam?</p>
+	<script>
+	  var spanElement = document.createElement('span');
+	  spanElement.innerHTML = ' TEXT ';
+
+	  var targetElement = document.getElementById('target'); 
+
+	  function movingItem(elem, parentElem, typeOfMoving) {
+      if (typeOfMoving === 1) {
+      	parentElem.insertAdjacentElement("beforeBegin", elem);
+      } else if (typeOfMoving === 2) {
+      	parentElem.insertAdjacentElement("afterBegin", elem);
+      } else if (typeOfMoving === 3) {
+      	parentElem.insertAdjacentElement("beforeEnd", elem);
+      } else if (typeOfMoving === 4) {
+      	parentElem.insertAdjacentElement("afterEnd", elem);
+      }  
+	  }
+
+		var typeOfMoving = 0;
+    
+    setInterval(function() {
+	    typeOfMoving++;
+      movingItem(spanElement, targetElement, (typeOfMoving % 4) + 1);	
+    }, 400);
+
+	</script>	
+</body>
+</html>
