@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <style>
+    body{
+      padding: 0;
+    }
+    div {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 30px;
+      width: 33%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: 0.4s;
+    }
+  </style>
+  <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, suscipit. Nobis corporis dignissimos ut nulla provident aliquam velit nesciunt consequuntur, quibusdam. Quaerat quo ducimus sapiente sit, officia, aliquid. Libero, minus!</p>
+  </div>
+   <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, suscipit. Nobis corporis dignissimos ut nulla provident aliquam velit nesciunt consequuntur, quibusdam. Quaerat quo ducimus sapiente sit, officia, aliquid. Libero, minus!</p>
+  </div>
+   <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, suscipit. Nobis corporis dignissimos ut nulla provident aliquam velit nesciunt consequuntur, quibusdam. Quaerat quo ducimus sapiente sit, officia, aliquid. Libero, minus!</p>
+  </div>
+	<script>
+	  var divElements = document.getElementsByTagName('div'); 
+    var clientWidth = document.documentElement.clientWidth;
+    var clientHeight = document.documentElement.clientHeight;
+
+
+	  function moveDivs(elems) {
+      for (var i = 0; i < elems.length; i++) {
+        elems[i].style.left = Math.random() * (clientWidth - elems[i].clientWidth) + 'px';
+        elems[i].style.top = Math.random() * (clientHeight - elems[i].clientHeight) + 'px';
+        //elems[i].style.top = Math.random() * 500 + 'px';
+      }  
+	  }
+  
+    setInterval(function() {
+      moveDivs(divElements);	
+    }, 1000);
+
+	</script>	
+</body>
+</html>

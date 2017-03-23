@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <style>
+  	td {
+  		height: 100px;
+  		width: 100px;
+  	}
+  	.black {
+  		background-color: #000;
+  	}
+  	.while {
+  		background-color: #fff;
+  	}
+  	table {
+  		border: 1px solid;
+  	}
+  </style>
+	<script>
+		function makeBoard(numberOfRows, numberOfColumns) {
+      var fragment = document.createDocumentFragment();
+      var i, j;
+      var arr = [];
+      var table = document.createElement('table');
+      fragment.appendChild(table);
+
+      for (i = 0; i < numberOfRows; i++) {
+        var tr = document.createElement('tr');
+        table.appendChild(tr);
+        for (j = 0; j < numberOfColumns; j++) {
+        	var td = document.createElement('td');
+        	if (j % 2 && !(i % 2) || !(j % 2) && (i % 2)) {
+        	  //td.setAttribute('bgcolor', '#000000');
+        	  td.className = 'black';
+          } else {
+          	td.className = 'while';
+          }
+          tr.appendChild(td);
+        }  
+      }
+      return fragment; 
+		}
+
+		var table = makeBoard(5, 7); 
+		document.body.appendChild(table);
+	</script>
+</body>
+</html>

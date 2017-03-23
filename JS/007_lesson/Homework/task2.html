@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <style>
+  	* {
+      font-size: 30px;
+    }
+    pre {
+      margin: 0;
+    }
+  </style>
+    <a href=""> anchor </a>
+    <div><pre> my div </pre></div>
+	<script>
+	  
+	  var anchorElement = document.getElementsByTagName('a')[0]; 
+    var divElement = document.getElementsByTagName('div')[0]; 
+
+	  function positionAt(anchor, position, elem) {
+      if (position === 'top') {
+      	anchor.insertAdjacentElement('beforeBegin', elem);
+      } else if (position === 'right') {
+        anchor.style.float = 'left';
+      } else if (position === 'bottom') {
+      	anchor.insertAdjacentElement('afterEnd', elem);
+      }
+	  }
+
+    //positionAt(anchorElement, 'top', divElement);
+    //positionAt(anchorElement, 'right', divElement);
+    //positionAt(anchorElement, 'bottom', divElement);
+
+	</script>	
+</body>
+</html>
