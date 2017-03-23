@@ -1,7 +1,6 @@
-'use strict';
-
 function joinArgs() {
-  return [].slice.call(arguments).join('*');
+  arguments.join = [].join;
+  return arguments.join('*');
 }
 
 console.log(joinArgs(1, 2, 3));
