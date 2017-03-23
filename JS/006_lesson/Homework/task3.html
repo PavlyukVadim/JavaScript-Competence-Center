@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script> 
+
+    window.onload = function() {
+    	if (document.documentElement.closest === undefined) {  
+	      Element.prototype.myclosest = function(css) {
+	      	var el = this.parentElement;
+		      do {
+		        if (el.matches(css)) {
+		          return el;
+		        }
+		        el = el.parentElement;
+		      } while (el);
+		      return null;
+		    } 
+	    }
+
+	    var element = document.getElementById('li-element');
+	    console.log(element.closest('div'));
+    }
+    
+  </script>
+</head>
+<body>
+  <div>
+    <h1>Heading 1</h1>
+    <div class="paragraph">
+	    <ul>
+	      <li>List Item 1</li>
+	      <li id="li-element">List Item 2</li>
+	    </ul>
+    </div>
+  </div>
+</body>
+</html>
