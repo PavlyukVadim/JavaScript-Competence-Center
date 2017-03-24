@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles/style2.css">
+</head>
+<body>
+	<input id="input" type="text">
+	<input id="btn" type="button" value="Enter">
+	<div id="output"></div>
+	<script>
+		var inputElement = document.getElementById('input');
+    var btnElement = document.getElementById('btn');
+    var outputElement = document.getElementById('output');
+
+    btnElement.onclick = function() {
+      outputElement.innerHTML = inputElement.value;
+    }
+	</script>
+</body>
+</html>

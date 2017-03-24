@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/style1.css">
+	<title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="green"></div>
+		<div class="green"></div>
+		<div class="green"></div>
+		<div class="green"></div>
+		<div class="green"></div>	
+  </div>
+	<input id='btn' type="button" value="Change div">
+	<script>
+	  var btn = document.getElementById('btn');
+	  var divElements = document.querySelectorAll('.container > div');
+	  var counter = 5;
+	  btn.onclick = function() {
+      divElements[(counter - 1) % 5].className = 'green';
+      divElements[(counter++) % 5].className = 'red';
+	  }  	
+	</script>
+</body>
+</html>
