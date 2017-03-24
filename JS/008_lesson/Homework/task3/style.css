@@ -1,0 +1,26 @@
+* {
+  font-size: 20px;
+}
+
+#calculator input[type='number'] {
+  width: 90px;
+}
+
+#operations input[type='button'] {
+  width: 50px;
+}
+
+#operations input[type='button']:hover {
+  cursor: pointer;
+  width: 50px;
+}
+
+#operations {
+  margin-top: 10px;
+}
+
+#operation {
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+}
