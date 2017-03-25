@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body id="main">
+  <script type="text/javascript">
+    window.onload = function() {
+      var main = document.getElementById('main');
+      main.onkeydown = function (e) {
+        e.preventDefault();
+        if (e.ctrlKey && (e.keyCode === 97 || e.keyCode === 65)) {
+          alert('Данные выбраны');
+        } else if(e.ctrlKey && (e.keyCode === 115 || e.keyCode === 83)) {
+          alert('Данные сохранены');
+        }
+      };
+    }
+  </script>
+</body>
+</html>

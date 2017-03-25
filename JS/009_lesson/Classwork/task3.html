@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <style type="text/css">
+    * {
+      font-size: 25px;
+    }
+  </style>
+  <input id="text-input" type="text" name="">
+  <script type="text/javascript">
+    var inputElement = document.getElementById('text-input');
+    inputElement.addEventListener('keypress', function(e) {
+      if (!/\d/.test(String.fromCharCode(e.charCode))) {
+        e.preventDefault(); 
+      }
+    });
+  </script>
+</body>
+</html>

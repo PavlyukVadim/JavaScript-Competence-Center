@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+}
+
+section {
+  height: 100vh;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+section h2 {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 40px;
+  top: 40%;
+  position: absolute;
+  width: 100%;
+}
+
+#section-1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./img/img-1.jpg);
+}
+ 
+#section-2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./img/img-2.jpg);
+} 
+
+#section-3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./img/img-3.jpg);
+}
+
+
+@keyframes show {
+  from {
+    bottom: 5%;
+  }
+  to {
+    bottom: 20%;
+  }
+}
+
+#button-up {
+  display: none;
+  position: fixed;
+  right: 20px;
+  animation: show 0.7s;
+  animation-fill-mode: forwards;
+  color: #fff;
+  font-size: 20px;       
+}
+
+#button-up:hover {
+  cursor: pointer;
+  color: #ddd;
+}
+
+.up {
+  transform: rotate( -90deg );
+}
+
+.down {
+  transform: rotate( 90deg );
+}
