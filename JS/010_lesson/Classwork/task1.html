@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btnLoad" type="button" value="load img">
+	<img id="image"/>
+	<script>
+		window.onload = function () {
+		  var btn = document.getElementById('btnLoad');
+		  var img = document.getElementById('image');
+		  btn.onclick = loadImgAsync;
+
+		  
+		  function loadImgAsync() {
+        var xhr = new XMLHttpRequest();
+		    xhr.open('GET', 'img.jpg', true);
+		    xhr.withCredentials = true;
+		    xhr.responseType = 'arraybuffer';
+
+		    xhr.onload = function(e) {
+		      var arr = new Uint8Array(this.response);
+		      var raw = String.fromCharCode.apply(null, arr);
+		      var b64 = btoa(raw);
+		      var dataURL = 'data:image/jpg;base64,' + b64;
+		      img.src = dataURL;
+		    };
+
+		    xhr.send();
+		  }
+
+		  setTimeout(loadImgAsync, 1000);
+		}
+	</script>
+</body>
+</html>
