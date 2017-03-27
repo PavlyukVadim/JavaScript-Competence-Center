@@ -15,17 +15,24 @@ addEventListenersAll();
 
 
 function showTip() {    
-  var tip = document.createElement('span');
+  var tip = document.getElementById('tip');
+  if (tip) {
+    tip.remove();
+  }
+  tip = document.createElement('div');
   tip.className = 'tooltip';
   tip.id = 'tip';
   tip.innerHTML = this.dataset.tooltip;    
   tip.style.left = this.getBoundingClientRect().left + 'px';
-  tip.style.top = this.getBoundingClientRect().bottom + 'px';
-  this.insertAdjacentElement('afterEnd', tip);
+  this.insertAdjacentElement('beforeBegin', tip);
+  tip.style.top = this.getBoundingClientRect().top - tip.clientHeight - 10 + 'px';
 };
 
 
 function hideTip() {
   var tip = document.getElementById('tip');
-  tip.remove();
+  tip.classList.add('hide-tooltip');
+  setTimeout(function() {
+    tip.remove();
+  }, 500);
 };
