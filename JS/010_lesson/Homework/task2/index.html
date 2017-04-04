@@ -12,7 +12,8 @@
   		var btn = document.getElementById('load-content');
   		btn.onclick = function() {
       	var xhr1 = new XMLHttpRequest();
-			  xhr1.open("GET", "page1.html", true); 
+			  xhr1.open("GET", "page1.html", true);
+			  xhr1.timeout = 20000;
 			  xhr1.onreadystatechange = function () {
 		      if (xhr1.readyState == 4) { 
 	          if (xhr1.status == 200) { 
@@ -22,6 +23,7 @@
 			  }
 			  var xhr2 = new XMLHttpRequest();
 			  xhr2.open("GET", "page2.html", true); 
+			  xhr2.timeout = 20000;
 			  xhr2.onreadystatechange = function () {
 		      if (xhr2.readyState == 4) { 
 	          if (xhr2.status == 200) { 
@@ -29,6 +31,8 @@
 	          }
 		      }
 			  }
+			  xhr1.ontimeout = function () { xhr1.abort(); alert("Timed out!!!"); }
+			  xhr2.ontimeout = function () { xhr2.abort(); alert("Timed out!!!"); }
         xhr1.send(); 
         xhr2.send(); 
   		}
