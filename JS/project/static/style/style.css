@@ -1,5 +1,9 @@
+@font-face {
+  font-family: Oswald;
+  src: url(../fonts/Oswald/Oswald-Medium.ttf); }
 body {
-  margin: 0; }
+  margin: 0;
+  font-family: Oswald; }
 
 section {
   height: 100vh;
@@ -15,9 +19,6 @@ section {
     position: absolute;
     width: 100%; }
 
-@font-face {
-  font-family: Oswald;
-  src: url(../fonts/Oswald/Oswald-Medium.ttf); }
 #section-1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/img-1.jpg); }
 
@@ -151,5 +152,68 @@ section {
 #nav-icon.open span:nth-child(3) {
   top: 18px;
   transform: rotate(-135deg); }
+
+/*-----------Slider----------*/
+#slider-component .slider-wrapper {
+  width: 100%;
+  overflow-x: hidden; }
+  #slider-component .slider-wrapper #slider {
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    width: 10000px; }
+    #slider-component .slider-wrapper #slider:hover {
+      cursor: pointer; }
+    #slider-component .slider-wrapper #slider .slide {
+      display: inline-block;
+      position: relative;
+      float: left;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center center; }
+      #slider-component .slider-wrapper #slider .slide .slide-content {
+        height: 40%;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%); }
+        #slider-component .slider-wrapper #slider .slide .slide-content p {
+          color: #fff;
+          text-align: center;
+          font-size: 60px;
+          margin: 20px auto 10px auto;
+          text-transform: uppercase;
+          width: 60%; }
+        #slider-component .slider-wrapper #slider .slide .slide-content .buy {
+          color: #000;
+          background: #ffe600;
+          margin: 10px;
+          padding: 10px 35px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          text-align: center; }
+    #slider-component .slider-wrapper #slider #slide-1 {
+      background-image: url(../img/bg.jpg); }
+    #slider-component .slider-wrapper #slider #slide-2 {
+      background-image: url(../img/bg2.jpeg); }
+    #slider-component .slider-wrapper #slider #slide-3 {
+      background-image: url(../img/bg3.jpg); }
+#slider-component #btn-prev {
+  position: absolute;
+  top: 50%;
+  left: 10%; }
+  #slider-component #btn-prev:hover {
+    cursor: pointer; }
+#slider-component #btn-prev, #slider-component #btn-next {
+  position: absolute;
+  top: 50%;
+  right: 10%; }
+  #slider-component #btn-prev:hover, #slider-component #btn-next:hover {
+    cursor: pointer; }
+
+/*-----------Slider----------*/
 
 /*# sourceMappingURL=style.css.map */
