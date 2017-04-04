@@ -95,7 +95,8 @@ window.onload = function() {
     var slides = document.querySelectorAll('#slider .slide');
     var prevBtn = document.getElementById('btn-prev');
     var nextBtn = document.getElementById('btn-next');
-   
+    var finger = document.getElementById('finger');
+    
     var indexOfCurrentSlide = 0;
     var slideWidth = slides[0].clientWidth;
     var numberOfSlides = slides.length;
@@ -103,6 +104,11 @@ window.onload = function() {
     var isRunning = false;
     var transitionRule = 'transform ' + Number(ANIMATION_DURATION / 1000) + 's'
 
+    var DELAY_AUTOPLAY = 5000;
+    var INTERVAL_AUTOPLAY = 3000;
+    var isAutoPlay = true;
+    var autoPlayTimer;
+    var createAutoPlayTimer;
 
     initiateSlider();
 
@@ -116,7 +122,16 @@ window.onload = function() {
         slider.style.transition = transitionRule; 
       }, 0);
     }
+    
+    if (isAutoPlay) {
+      autoPlay();
+    }
 
+    function autoPlay() {
+      autoPlayTimer = setInterval(function() {
+        changeSlide('next');
+      }, INTERVAL_AUTOPLAY);
+    }
 
     prevBtn.addEventListener('click', function() {
       changeSlide('prev');
@@ -167,15 +182,23 @@ window.onload = function() {
     slider.ondragstart = function() {
       return false;
     };
-    
+
+    finger.ondragstart = function() {
+      return false;
+    };    
 
     slider.onmousedown = function(e) {
+      if (isAutoPlay) {
+        clearInterval(autoPlayTimer);
+        clearTimeout(createAutoPlayTimer);
+      }
+      
       var mouseDownX = e.pageX;
       moveSlide(e);
       
       function moveSlide(e) {
-        console.log(e.pageX - mouseDownX);
-        if(isRunning) return;
+        finger.style.display = 'none';
+        if (isRunning) return;
         slider.style.transform = 'translateX(' + ( - slideWidth * (indexOfCurrentSlide + 1) + e.pageX - mouseDownX) + 'px)';
       }
 
@@ -195,13 +218,25 @@ window.onload = function() {
         }
         document.onmousemove = null;
         document.onmouseup = null;
+        createAutoPlayTimer = setTimeout(function () {
+          if (isAutoPlay) {
+            changeSlide('next');
+            autoPlay();
+          }
+        }, DELAY_AUTOPLAY);
+      
       }
     }
 
     
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      if (isAutoPlay) {
+        clearInterval(autoPlayTimer);
+        clearTimeout(createAutoPlayTimer);
+      }
       var touchStartX = 0;
       slider.addEventListener('touchstart', function(e) {
+        clearInterval(autoPlayTimer);
         var touchobj = e.changedTouches[0];
         touchStartX = parseInt(touchobj.clientX);
         e.preventDefault();
@@ -227,6 +262,12 @@ window.onload = function() {
           slider.style.transform = 'translateX(' + ( - slideWidth * (indexOfCurrentSlide + 1)) + 'px)';   
         } 
         e.preventDefault();
+        createAutoPlayTimer = setTimeout(function () {
+          if (isAutoPlay) {
+            changeSlide('next');
+            autoPlay();
+          }
+        }, DELAY_AUTOPLAY);
       }, false);  
     }
   })();

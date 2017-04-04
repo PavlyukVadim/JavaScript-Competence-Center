@@ -3,7 +3,24 @@
   src: url(../fonts/Oswald/Oswald-Medium.ttf);
 }
 
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
 
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(20px, 0, 0);
+  }
+}
+
+.shake {
+  animation-name: shake;
+  animation-duration: 8s;
+}
 
 $yellow: #ffe600;
 $toggle-color: #fff;
@@ -133,6 +150,10 @@ section {
 
   img {
     height: 3em;
+      
+      @media screen and (max-width: 400px) { 
+        height: 2.6em;
+      }
   }
 
   @media screen and (max-width: 768px) { 
@@ -260,10 +281,37 @@ section {
           p {
             color: #fff;
             text-align: center;
-            font-size: 60px;
             margin: 20px auto 10px auto;
             text-transform: uppercase;
             width: 60%;
+            
+            @media screen and (min-width: 1200px) { 
+              font-size: 65px;
+            }
+
+            @media screen and (max-width: 1200px) { 
+              font-size: 60px;
+            }
+
+            @media screen and (max-width: 992px) { 
+              font-size: 55px;
+            }
+
+            @media screen and (max-width: 690px) { 
+              font-size: 47px;
+              margin-top: 40px;
+            }
+
+            @media screen and (max-width: 500px) { 
+              font-size: 40px;
+              margin-top: 30px;
+            }
+
+            @media screen and (max-width: 400px) { 
+              font-size: 30px;
+              margin-top: 20px;
+            }
+
           }
 
           .buy {
@@ -275,6 +323,10 @@ section {
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
+
+            @media screen and (max-width: 400px) { 
+              padding: 7px 20px;
+            }
           }
 
         }
@@ -314,7 +366,14 @@ section {
       cursor: pointer;
     }
   }
-
+  
+  #finger {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    user-select: none;
+    -webkit-user-select: none;    
+  }
 }
 
 /*-----------Slider----------*/
