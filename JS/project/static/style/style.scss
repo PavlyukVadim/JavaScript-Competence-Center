@@ -132,6 +132,7 @@ section {
   z-index: 1;
   text-transform: uppercase;
   font-family: Oswald;
+  z-index: 1000;
 
   @media screen and (max-width: 768px) { 
     height: auto;
@@ -445,7 +446,7 @@ section {
     @media screen and (max-width: 768px) { 
       width: 200px;
     }
-    
+
   }
 }
 
@@ -579,6 +580,11 @@ section {
         cursor: pointer;
       }
 
+      @media screen and (max-width: 768px) { 
+        text-align: center;
+        display: block;  
+      }
+
     }
 
     &:first-child {
@@ -594,20 +600,28 @@ section {
   }
 
   .toolbar > .btn-choose-cat ~ .btn-choose-cat  {
+    
     &:before{
-      content: "\f0c8";
-      margin: 0 15px;
-      font-family: "FontAwesome";
-      font-size: 5px;
-      line-height: 3em;
-      text-align: center;
-      vertical-align: middle;
-      color: $yellow;
+
+      @media screen and (min-width: 768px) { 
+        content: "\f0c8";
+        margin: 0 15px;
+        font-family: "FontAwesome";
+        font-size: 5px;
+        line-height: 3em;
+        text-align: center;
+        vertical-align: middle;
+        color: $yellow;
+      }
     }
   }
 
   #portfolio {
     margin-top: 130px;
+
+    @media screen and (max-width: 768px) { 
+      margin-top: 220px;
+    }
     
     .tile {
       transition: transform 1s;

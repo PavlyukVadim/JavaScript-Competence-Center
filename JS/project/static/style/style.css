@@ -84,7 +84,8 @@ section {
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
   text-transform: uppercase;
-  font-family: Oswald; }
+  font-family: Oswald;
+  z-index: 1000; }
   @media screen and (max-width: 768px) {
     .navbar {
       height: auto; } }
@@ -385,21 +386,29 @@ section {
       color: #ffe600;
       transition: .1s;
       cursor: pointer; }
+    @media screen and (max-width: 768px) {
+      #portfolio-filter-component .toolbar .btn-choose-cat {
+        text-align: center;
+        display: block; } }
   #portfolio-filter-component .toolbar:first-child:before {
     content: ""; }
   #portfolio-filter-component .toolbar .active-btn {
     color: #ffe600; }
-#portfolio-filter-component .toolbar > .btn-choose-cat ~ .btn-choose-cat:before {
-  content: "\f0c8";
-  margin: 0 15px;
-  font-family: "FontAwesome";
-  font-size: 5px;
-  line-height: 3em;
-  text-align: center;
-  vertical-align: middle;
-  color: #ffe600; }
+@media screen and (min-width: 768px) {
+  #portfolio-filter-component .toolbar > .btn-choose-cat ~ .btn-choose-cat:before {
+    content: "\f0c8";
+    margin: 0 15px;
+    font-family: "FontAwesome";
+    font-size: 5px;
+    line-height: 3em;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffe600; } }
 #portfolio-filter-component #portfolio {
   margin-top: 130px; }
+  @media screen and (max-width: 768px) {
+    #portfolio-filter-component #portfolio {
+      margin-top: 220px; } }
   #portfolio-filter-component #portfolio .tile {
     transition: transform 1s;
     position: relative; }

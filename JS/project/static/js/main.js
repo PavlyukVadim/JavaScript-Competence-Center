@@ -298,6 +298,7 @@ window.onload = function() {
     var descsOfPortfolioTiles = document.getElementsByClassName('work-desc');
     var windowWidth = window.innerWidth;
     var tilesWidth = portfolioTiles[0].clientWidth;
+    var tilesHeight = portfolioTiles[0].clientHeight;
     var numberOfTilesInRow = Math.floor(windowWidth / tilesWidth);
     var fillingOfTiles = createArrayOfFillingOfTiles(numberOfTilesInRow, portfolioTiles.length);
     var btnRel;
@@ -383,7 +384,7 @@ window.onload = function() {
         for (j = 0; j < row.length; j++) {
           pos = getIndexOfNull();
           if (row[j] && pos.y * numberOfTilesInRow + pos.x < i * numberOfTilesInRow + j) {
-            portfolioTiles[i * numberOfTilesInRow + j].style.transform = 'translateX(' +  (pos.x - j) * tilesWidth + 'px) translateY(' +  (pos.y - i) * 200 + 'px)';
+            portfolioTiles[i * numberOfTilesInRow + j].style.transform = 'translateX(' +  (pos.x - j) * tilesWidth + 'px) translateY(' +  (pos.y - i) * tilesHeight + 'px)';
             fillingOfTiles[pos.y][pos.x] = 1;
             fillingOfTiles[i][j] = 0;
           }
