@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: Oswald-light;
-  src: url(../fonts/Oswald/Oswald-light.ttf);
+  src: url(../fonts/Oswald/Oswald-Light.ttf);
 }
 
 @keyframes shake {
@@ -22,6 +22,47 @@
   }
 }
 
+@keyframes zoomInUp {
+    from {
+      opacity: 0;
+      transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+      animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    }
+
+    60% {
+      opacity: 1;
+      transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+      animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    }
+  }
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 .shake {
   animation-name: shake;
   animation-duration: 8s;
@@ -32,27 +73,6 @@ $toggle-color: #fff;
 $grey: #707070;
 $dark: #131316;
 
-.container {
-  width: 90%;
-}
-
-.row:before, .row:after {
-  display: table;
-  content: " ";
-}
-
-.row:after {
-  clear: both;
-}
- 
-.container:before, .container:after {
-  display: table;
-  content: " ";
-}
-
-.container:after {
-  clear: both;
-}
 
 body {
   margin: 0;
@@ -420,7 +440,12 @@ section {
     bottom: 0;
     right: 30px;
     user-select: none;
-    -webkit-user-select: none;    
+    -webkit-user-select: none;
+    
+    @media screen and (max-width: 768px) { 
+      width: 200px;
+    }
+    
   }
 }
 
@@ -533,4 +558,136 @@ section {
   }
 }
 /*------How-we-do-it------*/    
+
+/*-------Portfolio--------*/
+
+#portfolio-filter-component {
+  
+  .toolbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+
+    .btn-choose-cat {
+      color: $grey;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $yellow;
+        transition: .1s;
+        cursor: pointer;
+      }
+
+    }
+
+    &:first-child {
+    
+        &:before {
+          content: "";
+        }  
+    }
+
+    .active-btn {
+      color: $yellow;
+    }
+  }
+
+  .toolbar > .btn-choose-cat ~ .btn-choose-cat  {
+    &:before{
+      content: "\f0c8";
+      margin: 0 15px;
+      font-family: "FontAwesome";
+      font-size: 5px;
+      line-height: 3em;
+      text-align: center;
+      vertical-align: middle;
+      color: $yellow;
+    }
+  }
+
+  #portfolio {
+    margin-top: 130px;
+    
+    .tile {
+      transition: transform 1s;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      .work-desc {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+        background-color: rgba(255, 230, 0, .55);
+        text-align: center;
+        animation-fill-mode: forwards;
+        animation-name: zoomOut;
+        animation-duration: 0s;
+
+        .wrapper {
+          position: absolute;
+          width: 100%;
+          margin: 0;
+          top: 47%;
+          transform: translateY(-50%);
+          color: $toggle-color;
+
+          .work-title {
+            font-size: 1.4em;
+            margin: 0; 
+          }
+
+          .category {
+            margin: 0;
+            font-family: Oswald-light;
+          }
+        }
+      }
+
+    }
+
+    .zoomInUp {
+      animation-name: zoomInUp;
+      animation-duration: .8s;
+      /*animation-fill-mode: forwards;*/
+    }
+
+    .zoomOut {
+      animation-name: zoomOut;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+    }
+
+    .mouse-over {
+      .work-desc {
+        animation-name: zoomIn;
+        animation-duration: .4s;
+
+        .work-title {
+          animation-name: zoomIn;
+          animation-duration: .5s;
+          
+        }
+      }
+    }
+
+    .mouse-out {
+      .work-desc {
+        animation-name: zoomOut;
+        animation-duration: .4s;
+      }
+    }
+  }
+}
+
+
+/*-------Portfolio--------*/
 

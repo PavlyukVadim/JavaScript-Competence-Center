@@ -3,7 +3,7 @@
   src: url(../fonts/Oswald/Oswald-Medium.ttf); }
 @font-face {
   font-family: Oswald-light;
-  src: url(../fonts/Oswald/Oswald-light.ttf); }
+  src: url(../fonts/Oswald/Oswald-Light.ttf); }
 @keyframes shake {
   from, to {
     transform: translate3d(0, 0, 0); }
@@ -11,26 +11,32 @@
     transform: translate3d(-20px, 0, 0); }
   20%, 40%, 60%, 80% {
     transform: translate3d(20px, 0, 0); } }
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
+@keyframes zoomOut {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  to {
+    opacity: 0; } }
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
 .shake {
   animation-name: shake;
   animation-duration: 8s; }
-
-.container {
-  width: 90%; }
-
-.row:before, .row:after {
-  display: table;
-  content: " "; }
-
-.row:after {
-  clear: both; }
-
-.container:before, .container:after {
-  display: table;
-  content: " "; }
-
-.container:after {
-  clear: both; }
 
 body {
   margin: 0;
@@ -291,6 +297,9 @@ section {
     right: 30px;
     user-select: none;
     -webkit-user-select: none; }
+    @media screen and (max-width: 768px) {
+      #slider-component #finger {
+        width: 200px; } }
 
 /*-----------Slider----------*/
 /*----What-we-love-to-do-----*/
@@ -363,5 +372,84 @@ section {
         margin-bottom: 30px; } }
 
 /*------How-we-do-it------*/
+/*-------Portfolio--------*/
+#portfolio-filter-component .toolbar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 50px; }
+  #portfolio-filter-component .toolbar .btn-choose-cat {
+    color: #707070;
+    text-transform: uppercase; }
+    #portfolio-filter-component .toolbar .btn-choose-cat:hover {
+      color: #ffe600;
+      transition: .1s;
+      cursor: pointer; }
+  #portfolio-filter-component .toolbar:first-child:before {
+    content: ""; }
+  #portfolio-filter-component .toolbar .active-btn {
+    color: #ffe600; }
+#portfolio-filter-component .toolbar > .btn-choose-cat ~ .btn-choose-cat:before {
+  content: "\f0c8";
+  margin: 0 15px;
+  font-family: "FontAwesome";
+  font-size: 5px;
+  line-height: 3em;
+  text-align: center;
+  vertical-align: middle;
+  color: #ffe600; }
+#portfolio-filter-component #portfolio {
+  margin-top: 130px; }
+  #portfolio-filter-component #portfolio .tile {
+    transition: transform 1s;
+    position: relative; }
+    #portfolio-filter-component #portfolio .tile img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle; }
+    #portfolio-filter-component #portfolio .tile .work-desc {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-transform: uppercase;
+      background-color: rgba(255, 230, 0, 0.55);
+      text-align: center;
+      animation-fill-mode: forwards;
+      animation-name: zoomOut;
+      animation-duration: 0s; }
+      #portfolio-filter-component #portfolio .tile .work-desc .wrapper {
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        top: 47%;
+        transform: translateY(-50%);
+        color: #fff; }
+        #portfolio-filter-component #portfolio .tile .work-desc .wrapper .work-title {
+          font-size: 1.4em;
+          margin: 0; }
+        #portfolio-filter-component #portfolio .tile .work-desc .wrapper .category {
+          margin: 0;
+          font-family: Oswald-light; }
+  #portfolio-filter-component #portfolio .zoomInUp {
+    animation-name: zoomInUp;
+    animation-duration: .8s;
+    /*animation-fill-mode: forwards;*/ }
+  #portfolio-filter-component #portfolio .zoomOut {
+    animation-name: zoomOut;
+    animation-duration: .8s;
+    animation-fill-mode: forwards; }
+  #portfolio-filter-component #portfolio .mouse-over .work-desc {
+    animation-name: zoomIn;
+    animation-duration: .4s; }
+    #portfolio-filter-component #portfolio .mouse-over .work-desc .work-title {
+      animation-name: zoomIn;
+      animation-duration: .5s; }
+  #portfolio-filter-component #portfolio .mouse-out .work-desc {
+    animation-name: zoomOut;
+    animation-duration: .4s; }
+
+/*-------Portfolio--------*/
 
 /*# sourceMappingURL=style.css.map */
