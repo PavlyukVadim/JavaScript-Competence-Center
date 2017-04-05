@@ -273,4 +273,26 @@ window.onload = function() {
   })();
 
 
+
+  (function whatWeLoveComponent() {
+    var icons = document.getElementsByClassName('icon');
+    var i;
+
+    for (i = 0; i < icons.length; i++) {
+      icons[i].addEventListener('mouseover', function() {
+        this.style.transform = 'translateX(-50%) translateY(-50%) scale(1.1)';  
+        this.style.transition = '.5s';
+      }); 
+      icons[i].addEventListener('mouseout', function() {
+        this.style.transform = 'translateX(-50%) translateY(-50%) scale(1)';  
+      });
+    }
+
+  })();
+
+
+  
+
+
+
 };
