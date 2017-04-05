@@ -411,6 +411,46 @@ window.onload = function() {
   })();
 
 
+
+  (function doYouLikeComponent() {
+    var btnScrollToContactUs = document.getElementById('btn-contact-us');
+    var SCROLL_TIME = 400;
+    var acceleration = true;
+
+    btnScrollToContactUs.addEventListener('click', function() {
+      var scrolled = 0 || window.pageYOffset || document.documentElement.scrollTop;
+      var contactUsPos = document.getElementById('contact-us').offsetTop;
+      toggleScroll(contactUsPos, scrolled);
+      console.log(contactUsPos, scrolled);
+    });
+
+    function toggleScroll(to, scrolled) {
+      var distance = Math.abs(to - scrolled);
+      var initialDistance = distance;
+      var speed = distance / SCROLL_TIME * 10; // pixels/10ms
+      var step;
+      isScrolling = true;
+      if (acceleration) {
+        speed = 0;
+        step = 2 * distance / Math.pow(SCROLL_TIME, 2) * 10;
+      }
+      var scrollInterval = setInterval(function() {
+        distance -= speed;
+        if (acceleration && distance >= initialDistance / 2) {
+          speed += step;
+        } else if (acceleration && distance < initialDistance / 2) {
+          speed = speed > step * 3 ? speed - step : speed;
+        }
+        var positionY = scrolled < to ? to - distance : to + distance;
+        window.scrollTo(0, positionY); 
+        if (distance <= 0) {
+          isScrolling = false;
+          clearInterval(scrollInterval);
+        }
+      }, 10);
+    }
+
+  })();
   
 
 

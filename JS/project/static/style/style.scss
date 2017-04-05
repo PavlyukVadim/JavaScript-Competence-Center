@@ -705,3 +705,88 @@ section {
 
 /*-------Portfolio--------*/
 
+/*-------Do-you-like------*/
+
+#do-you-like {
+  padding-bottom: 100px;
+
+  .container {
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    #btn-contact-us {
+      color: $toggle-color;
+      background: $yellow;
+      margin: 50px 0;
+      padding: 10px 35px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 400px) { 
+        padding: 7px 20px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+/*-------Do-you-like------*/
+
+/*-------Contact-Us-------*/
+
+#contact-us {
+  
+  .container {
+    
+    .row {
+      margin-top: 50px;
+
+      .contact-item {
+        
+        .circle {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin: 0 auto;
+
+          img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+          }
+        }
+
+        h3 {
+          text-transform: uppercase;
+          text-align: center;
+        }
+
+        p {
+          font-family: Oswald-light;
+          font-size: 16px;
+          width: 80%;
+          margin: 0 auto;
+          color: $grey;
+          text-align: center;
+        }
+
+        @media screen and (max-width: 768px) { 
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+
+/*-------Contact-Us-------*/
