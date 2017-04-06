@@ -63,6 +63,18 @@
   }
 }
 
+
+@keyframes shiftdigits {
+  from {
+    top: -9em;
+  }
+  to {
+    top: 0em;
+  }
+}
+
+
+
 .shake {
   animation-name: shake;
   animation-duration: 8s;
@@ -708,7 +720,7 @@ section {
 /*-------Do-you-like------*/
 
 #do-you-like {
-  padding-bottom: 100px;
+  padding-bottom: 150px;
 
   .container {
 
@@ -740,6 +752,76 @@ section {
 }
 
 /*-------Do-you-like------*/
+
+/*-------Statistics-------*/
+#statistics-component {
+  background-color: $dark;
+  color: $toggle-color;
+
+  .container {
+    
+    .title {
+      margin-top: 50px;
+      margin-bottom: 0;
+    }
+
+    .section-desc {
+      color: $toggle-color;
+    }
+
+    .row {
+      margin-top: 50px;
+
+      .type {
+        font-size: 40px;
+        height: 3.5em;
+        margin: 0 20px;
+        border: 1px solid $yellow;
+        position: relative;
+
+        .count-up-animate {
+          animation-name: shiftdigits;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+
+        .statistic-count-up {
+          position: absolute;
+          overflow: hidden;
+          width: 100%;
+          line-height: 1em;
+          height: 1em;
+          left: 50%;
+          top: .8em;
+          transform: translateX(-50%);
+          
+          .list-of-digits {
+            margin: 0;
+            padding: 0; 
+            top: 0em;
+            list-style: none;
+            position: absolute;
+            font-weight: bold;
+          }
+        }
+
+        h3 {
+          font-size: 18px;
+          position: absolute;
+          text-transform: uppercase;
+          color: $yellow;
+          width: 100%;
+          line-height: 1em;
+          height: 1em;
+          font-family: Oswald-light;
+          text-align: center;
+          bottom: 18px;
+        }
+      }
+    } 
+  } 
+}
+/*-------Statistics-------*/
 
 /*--------About-Us--------*/
 

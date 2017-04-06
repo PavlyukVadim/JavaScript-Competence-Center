@@ -1,5 +1,7 @@
 window.onload = function() {
-
+  
+  var isScrollingViaMenu = false;
+  
   
   (function menuComponent() {
     
@@ -66,6 +68,7 @@ window.onload = function() {
       var speed = distance / SCROLL_TIME * 10; // pixels/10ms
       var step;
       isScrolling = true;
+      isScrollingViaMenu = true;
       if (acceleration) {
         speed = 0;
         step = 2 * distance / Math.pow(SCROLL_TIME, 2) * 10;
@@ -81,6 +84,7 @@ window.onload = function() {
         window.scrollTo(0, positionY); 
         if (distance <= 0) {
           isScrolling = false;
+          isScrollingViaMenu = false;
           clearInterval(scrollInterval);
         }
       }, 10);
@@ -452,6 +456,90 @@ window.onload = function() {
 
   })();
   
+
+
+  (function statisticsComponent() {
+    var statisticsComponent = document.getElementById('statistics-component');
+    var firstNumber = document.querySelectorAll('#statistics-component .type')[0];
+    var ANIMATION_DURATION = 3000;
+    var isPlayed = false;
+    var isInFieldOfView = false;
+    var scrolled;
+
+    tryToStart();
+
+
+    document.addEventListener('scroll', function() {
+      tryToStart();      
+    });
+
+
+    function tryToStart() {
+      var diff = scrolled - (statisticsComponent.offsetTop + firstNumber.offsetTop - window.innerHeight);
+      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
+      isInFieldOfView = (diff > 0 && diff < statisticsComponent.clientHeight - firstNumber.offsetTop + window.innerHeight) //&&
+      //console.log(isInFieldOfView);
+      if (isInFieldOfView && !isPlayed && !isScrollingViaMenu) start();
+    }
+
+
+    function start() {
+      var countUpElements = document.getElementsByClassName('statistic-count-up'); 
+      var i;
+      isPlayed = true;
+
+      for (i = 0; i < countUpElements.length; i++) {
+        createCountUpForElement(countUpElements[i]);
+      }  
+    }
+    
+    
+    function createCountUpForElement(countUpElement) {
+      var countUpValue = countUpElement.dataset.value;
+      var numberOfDigits = countUpValue.length;
+      var arrayOfDigitLists = [];
+      var animationDuration;
+      var i;
+      var list;  
+
+      for (i = 0; i < numberOfDigits; i++) {
+        list = createDigitList();
+        list.style.left = 0.5 * i + 'em';
+        list.classList.add('count-up-animate');
+        animationDuration = (ANIMATION_DURATION / (countUpValue.slice(0, i + 1)) + 1) / 100;
+        if (i >= 2) {
+          animationDuration = Math.max(animationDuration, (numberOfDigits - i));
+        }
+        list.style.animationDuration = animationDuration + 's';
+        arrayOfDigitLists.push(list);
+        countUpElement.appendChild(list);
+      }
+      countUpElement.style.width = (numberOfDigits / 2) + 'em';
+      
+      setTimeout(function() {
+        for (i = 0; i < numberOfDigits; i++) {
+          arrayOfDigitLists[i].classList.toggle('count-up-animate');
+          arrayOfDigitLists[i].innerText = countUpValue[i];  
+        }
+      }, ANIMATION_DURATION + 200);
+    }
+    
+
+    function createDigitList() {
+      var ul = document.createElement('ul');
+      var li;
+      var i;
+
+      for (i = 0; i < 10; i++) {
+        li = document.createElement('li');
+        li.innerHTML = 9 - i;
+        ul.appendChild(li);
+      }
+      ul.classList.add('list-of-digits');
+      return ul;
+    }
+
+  })();
 
 
 
