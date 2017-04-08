@@ -194,9 +194,6 @@ section {
   }
 }
 
-#section-3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/img-3.jpg);
-}
 
 .navbar {
   width: 100%;
@@ -1153,6 +1150,60 @@ height: 2000px;
 
 /*---------Team-----------*/
 
+/*--Our-clients-component-*/
+
+#our-clients-component {
+  
+  .container {
+    
+    .slider-wrapper {
+      width: 100%;
+      overflow-x: hidden;
+
+      #cyclic-slider {
+        user-select: none;
+        -webkit-user-select: none;
+        overflow: hidden;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        width: 10000px;
+
+        .slide {
+          display: inline-block;
+          position: relative;
+          margin: 50px 32px;
+
+          @media screen and (max-width: 992px) { 
+            margin: 50px 20px;
+          }
+
+          @media screen and (max-width: 687px) { 
+            margin: 50px 12px;
+          }
+          
+          .slide-content {
+            width: 180px;
+
+            @media screen and (max-width: 687px) { 
+              width: 80vw;
+            }
+
+            img {
+              display: block;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*--Our-clients-component-*/
+
 /*--------Reviews---------*/
 
 #reviews-component {
@@ -1280,6 +1331,88 @@ height: 2000px;
 }
 
 /*-------Contact-Us-------*/
+
+/*---------Form-----------*/
+
+#form-component {
+  background-color: $dark-green;
+  color: $toggle-color;
+
+  .container {
+    
+    .section-desc {
+      color: $toggle-color;
+      margin-bottom: 40px;
+    }
+
+    form {
+
+      .input-wrapper {
+        padding: 0 30px;
+
+        input {
+          background-color: transparent;
+          border-radius: 0;
+          width: 100%;
+          border: 1px solid $grey;
+          padding: 15px;
+          color: $toggle-color;
+          font-family: Oswald-light;
+          font-size: 18px;
+
+          &:focus {
+            background-color: rgba(255, 255, 255, .08);
+            outline-color: $yellow;
+          }
+        }
+
+        .invalid-value {
+          display: none;
+          position: absolute;
+        }
+        
+        textarea {
+          background-color: transparent;
+          width: 100%;
+          margin-top: 30px;
+          padding: 15px;
+          color: $toggle-color;
+          font-family: Oswald-light;
+          font-size: 18px;
+          resize: none;
+
+          &:focus {
+            background-color: rgba(255, 255, 255, .08);
+            outline-color: $yellow;
+          }
+        }
+      }
+
+      input[type="submit"] {
+        background-color: $yellow;
+        color: #000;
+        border: none;
+        margin-top: 40px;
+        margin-left: 50%;
+        padding: 10px 35px;
+        transform: translateX(-50%);
+        text-align: center;
+        font-family: Oswald;
+        text-transform: uppercase;
+
+        @media screen and (max-width: 400px) { 
+          padding: 7px 20px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/*---------Form-----------*/
 
 /*---------Footer---------*/
 

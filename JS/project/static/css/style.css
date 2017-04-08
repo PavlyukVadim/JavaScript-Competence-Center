@@ -116,9 +116,6 @@ section {
     text-align: center;
     padding-top: 20px; }
 
-#section-3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/img-3.jpg); }
-
 .navbar {
   width: 100%;
   font-size: 25px;
@@ -743,6 +740,37 @@ section {
       transition: opacity 1s; }
 
 /*---------Team-----------*/
+/*--Our-clients-component-*/
+#our-clients-component .container .slider-wrapper {
+  width: 100%;
+  overflow-x: hidden; }
+  #our-clients-component .container .slider-wrapper #cyclic-slider {
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    width: 10000px; }
+    #our-clients-component .container .slider-wrapper #cyclic-slider:hover {
+      cursor: pointer; }
+    #our-clients-component .container .slider-wrapper #cyclic-slider .slide {
+      display: inline-block;
+      position: relative;
+      margin: 50px 32px; }
+      @media screen and (max-width: 992px) {
+        #our-clients-component .container .slider-wrapper #cyclic-slider .slide {
+          margin: 50px 20px; } }
+      @media screen and (max-width: 687px) {
+        #our-clients-component .container .slider-wrapper #cyclic-slider .slide {
+          margin: 50px 12px; } }
+      #our-clients-component .container .slider-wrapper #cyclic-slider .slide .slide-content {
+        width: 180px; }
+        @media screen and (max-width: 687px) {
+          #our-clients-component .container .slider-wrapper #cyclic-slider .slide .slide-content {
+            width: 80vw; } }
+        #our-clients-component .container .slider-wrapper #cyclic-slider .slide .slide-content img {
+          display: block;
+          margin: 0 auto; }
+
+/*--Our-clients-component-*/
 /*--------Reviews---------*/
 #reviews-component {
   background-color: #131316;
@@ -819,6 +847,60 @@ section {
       margin-bottom: 30px; } }
 
 /*-------Contact-Us-------*/
+/*---------Form-----------*/
+#form-component {
+  background-color: #131a1d;
+  color: #fff; }
+  #form-component .container .section-desc {
+    color: #fff;
+    margin-bottom: 40px; }
+  #form-component .container form .input-wrapper {
+    padding: 0 30px; }
+    #form-component .container form .input-wrapper input {
+      background-color: transparent;
+      border-radius: 0;
+      width: 100%;
+      border: 1px solid #707070;
+      padding: 15px;
+      color: #fff;
+      font-family: Oswald-light;
+      font-size: 18px; }
+      #form-component .container form .input-wrapper input:focus {
+        background-color: rgba(255, 255, 255, 0.08);
+        outline-color: #ffe600; }
+    #form-component .container form .input-wrapper .invalid-value {
+      display: none;
+      position: absolute; }
+    #form-component .container form .input-wrapper textarea {
+      background-color: transparent;
+      width: 100%;
+      margin-top: 30px;
+      padding: 15px;
+      color: #fff;
+      font-family: Oswald-light;
+      font-size: 18px;
+      resize: none; }
+      #form-component .container form .input-wrapper textarea:focus {
+        background-color: rgba(255, 255, 255, 0.08);
+        outline-color: #ffe600; }
+  #form-component .container form input[type="submit"] {
+    background-color: #ffe600;
+    color: #000;
+    border: none;
+    margin-top: 40px;
+    margin-left: 50%;
+    padding: 10px 35px;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: Oswald;
+    text-transform: uppercase; }
+    @media screen and (max-width: 400px) {
+      #form-component .container form input[type="submit"] {
+        padding: 7px 20px; } }
+    #form-component .container form input[type="submit"]:hover {
+      cursor: pointer; }
+
+/*---------Form-----------*/
 /*---------Footer---------*/
 footer {
   background-color: #131316;
