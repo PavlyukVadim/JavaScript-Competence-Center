@@ -1,8 +1,8 @@
 window.onload = function() {
   
   var isScrollingViaMenu = false;
-  
-  
+  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
   (function menuComponent() {
     
     var navIcon = document.getElementById('nav-icon');
@@ -24,7 +24,7 @@ window.onload = function() {
     });
 
     navItems.addEventListener('click', function() {
-      if (!this.classList.contains('navbar-toggler')) return;
+      if (!isMobile) return;
       navIcon.classList.toggle('open');
       isOpenMobileMenu = !isOpenMobileMenu;
       navItems.style.height = 0;  
@@ -45,6 +45,7 @@ window.onload = function() {
   (function scrollToComponent() {
     
     var navLinks = document.getElementsByClassName('nav-link');
+    var navbar = document.getElementsByClassName('navbar')[0];
     var mapOffsetTop = {};
     var i;
     var selector;
@@ -69,11 +70,17 @@ window.onload = function() {
       })(i);
     }
 
+    
     document.addEventListener('scroll', function() {
-      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
-    })
+      scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    });
+
 
     function toggleScroll(to, scrolled) {
+      if (!isMobile) {
+        to = to - navbar.clientHeight;  
+      }
+      
       var distance = Math.abs(to - scrolled);
       var initialDistance = distance;
       var speed = distance / SCROLL_TIME * 10; // pixels/10ms
@@ -457,48 +464,6 @@ window.onload = function() {
 
   })();
 
-
-
-  (function doYouLikeComponent() {
-    var btnScrollToContactUs = document.getElementById('btn-contact-us');
-    var SCROLL_TIME = 400;
-    var acceleration = true;
-
-    btnScrollToContactUs.addEventListener('click', function() {
-      var scrolled = 0 || window.pageYOffset || document.documentElement.scrollTop;
-      var contactUsPos = document.getElementById('contact-us').offsetTop;
-      toggleScroll(contactUsPos, scrolled);
-      console.log(contactUsPos, scrolled);
-    });
-
-    function toggleScroll(to, scrolled) {
-      var distance = Math.abs(to - scrolled);
-      var initialDistance = distance;
-      var speed = distance / SCROLL_TIME * 10; // pixels/10ms
-      var step;
-      isScrolling = true;
-      if (acceleration) {
-        speed = 0;
-        step = 2 * distance / Math.pow(SCROLL_TIME, 2) * 10;
-      }
-      var scrollInterval = setInterval(function() {
-        distance -= speed;
-        if (acceleration && distance >= initialDistance / 2) {
-          speed += step;
-        } else if (acceleration && distance < initialDistance / 2) {
-          speed = speed > step * 3 ? speed - step : speed;
-        }
-        var positionY = scrolled < to ? to - distance : to + distance;
-        window.scrollTo(0, positionY); 
-        if (distance <= 0) {
-          isScrolling = false;
-          clearInterval(scrollInterval);
-        }
-      }, 10);
-    }
-
-  })();
-  
 
 
   (function statisticsComponent() {
