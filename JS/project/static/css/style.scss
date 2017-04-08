@@ -1281,3 +1281,56 @@ height: 2000px;
 
 /*-------Contact-Us-------*/
 
+/*---------Footer---------*/
+
+footer {
+  background-color: $dark;
+  color: $toggle-color;
+
+  p {
+    text-align: center;
+    padding: 24px 0;
+    margin: 0;
+    font-family: Oswald-light;
+
+    span {
+      color: $yellow;
+    }
+  }
+
+  .icons {
+    display: inline-block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+
+    i { 
+      margin: 0 7px;
+    }
+  }
+
+  #to-top {
+    width: 50px;
+    height: 50px;
+    background-color: $yellow;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+
+      img {
+        transform: translateX(-50%) translateY(-80%);  
+      }      
+    }
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: .2s;
+    }
+  }
+}
