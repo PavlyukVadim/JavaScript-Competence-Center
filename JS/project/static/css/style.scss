@@ -23,18 +23,18 @@
 }
 
 @keyframes zoomInUp {
-    from {
-      opacity: 0;
-      transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
-      animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-    }
-
-    60% {
-      opacity: 1;
-      transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
-      animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-    }
+  from {
+    opacity: 0;
+    transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+  }
+}
 
 @keyframes zoomOut {
   from {
@@ -84,6 +84,7 @@ $yellow: #ffe600;
 $toggle-color: #fff;
 $grey: #707070;
 $dark: #131316;
+$dark-green: #131a1d;
 
 
 body {
@@ -880,6 +881,217 @@ section {
 
 /*--------About-Us--------*/
 
+/*---------Team-----------*/
+
+#team-component {
+
+  .container {
+  
+    .section-title {
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .section-description{
+      text-align: center;
+    }
+    
+    .team-cards {
+      margin-top: 75px;
+
+      .team-card {
+
+        img {
+          width: 90%;
+          margin: 0 auto;
+          display: block;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .name {
+          text-transform: uppercase;
+          text-align: center;
+          color: $yellow;
+        }
+
+        .position {
+          text-transform: uppercase;
+          text-align: center;
+          color: $grey;
+        }
+          
+        .grey-line {
+          width: 90%;
+          margin: 0 auto 20px auto;
+          height: 2px;
+          background-color: $grey;
+        }
+
+        .arrow-up {
+          opacity: 0;
+          width: 0; 
+          height: 0; 
+          margin: 25px auto 0 auto;
+          border-left: 25px solid transparent;
+          border-right: 25px solid transparent;
+          border-bottom: 25px solid $dark;
+        }
+
+        .skill-description {
+          background-color: $dark;
+          z-index: 999;
+          color: white;
+          position: absolute;
+          left: 0;
+          width: 100%;
+          transition: opacity 1s;
+
+          .description {
+            display: none;
+            position: relative;
+            
+            .employee-info {
+
+              max-width: 900px;
+              width: 70%; 
+              margin: 0 auto;
+              padding: 40px 0; 
+              position: relative;
+
+              .close {
+
+                position: absolute;
+                right: 20px;
+                font-size: 26px;
+                transition: .5s;
+
+                &:hover {
+                  cursor: pointer;
+                  transform: scale(1.5);
+                }
+              }
+
+              .employee-name {
+                text-transform: uppercase;
+                color: $yellow;
+              }
+
+              .social-icons {
+
+                i {
+                  border: 1px solid $toggle-color;
+                  height: 25px;
+                  width: 25px;
+                  text-align: center;
+                  line-height: 25px;
+                  margin-right: 10px;
+                }
+              }
+
+            }
+            
+            #charts-component {
+              background-color: $dark-green;
+
+              .charts {
+
+                .section-desc {
+                  margin-bottom: 35px;
+                  color: $toggle-color;
+                }
+
+                .chart {
+                  height: 170px;
+                  position: relative;
+                  display: inline-block;
+                  
+                  @media screen and (max-width: 768px) { 
+                    margin-top: 20px;
+                  } 
+
+                  @media screen and (max-width: 360px) { 
+                    margin-top: 10px;
+                    display: block; 
+                    height: auto;
+                  }
+
+                  canvas {
+                    margin: 0 auto;
+                    display: block;
+
+                    @media screen and (max-width: 360px) { 
+                      display: none;
+                    }
+                  }
+
+                }
+
+                .number-of-percents {
+                  width: 100%;
+                  text-align: center;
+                  position: absolute;
+                  color: $yellow;
+                  font-size: 34px;
+                  font-family: Oswald-light;
+                  margin: 0;
+                  padding-top: 5px;
+                  top: 50%;
+                  transform: translateY(-80%);
+
+                  @media screen and (max-width: 360px) { 
+                    transform: none;
+                    position: static;
+                    width: auto;
+                    display: inline-block;
+                    float: right;
+                    font-size: 25px;
+                    padding: 0;
+                    margin-right: 15px;
+                  }
+                }
+
+                .chart-title {
+                  min-width: 100%;
+                  position: relative;
+                  text-align: center;
+                  font-family: Oswald-light;
+                  color: $yellow;
+                  font-size: 25px;
+                  margin: 0;
+
+                  @media screen and (max-width: 360px) { 
+                    min-width: 0;
+                    display: inline-block;
+                    margin-left: 15px;
+                  }
+                }
+              }
+            }
+          }
+
+          .active {
+            display: block;
+          }
+        }
+      }
+
+      .active {
+          
+        .arrow-up {
+          opacity: 1;
+          transition: opacity 1s;
+        }
+      }
+    }
+  }
+}
+
+
+/*---------Team-----------*/
 
 /*-------Contact-Us-------*/
 

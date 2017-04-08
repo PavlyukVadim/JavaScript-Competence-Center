@@ -542,5 +542,197 @@ window.onload = function() {
   })();
 
 
+  
+  (function teamComponent() {
+
+    var arrayOfTeamCards = document.getElementsByClassName('team-card');
+    var arrayOfDescriptions = document.querySelectorAll('.skill-description .description');
+    var skillDescription = document.getElementsByClassName('skill-description')[0]; 
+    var teamComponent = document.getElementById('team-component');
+    var chartsComponent = document.getElementById('charts-component');
+    var firstChart = document.querySelectorAll('.active .chart-canvas')[0];
+    
+
+    var i, j;
+    var target;
+    var isPlayed = false;
+    var prevActive = arrayOfTeamCards[0];
+
+    var scrolled = 0 || window.pageYOffset || document.documentElement.scrollTop;
+    var SCROLL_TIME = 300; // ms
+    var acceleration = true;
+    var isScrolling = false;
+
+
+    for (i = 0; i < arrayOfTeamCards.length; i++) {
+      (function(i) {
+        arrayOfTeamCards[i].addEventListener('click', function(e) {
+          if (isScrolling) return;
+          if (e.target.classList.contains('close-btn')) {
+            skillDescription.parentElement.removeChild(skillDescription);
+            this.classList.remove('active');
+            return;
+          } else if (e.target.tagName !== 'IMG') {
+            return;
+          }
+
+          prevActive.classList.remove('active');
+          prevActive = this;
+          target = this.dataset.employee;
+          skillDescription.style.opacity = '0';
+          this.appendChild(skillDescription);
+          
+          console.log(teamComponent.offsetTop + this.offsetTop - (window.innerHeight - this.clientHeight - skillDescription.clientHeight));
+          setTimeout(function(that) {
+            toggleScroll(teamComponent.offsetTop + that.offsetTop - (window.innerHeight - that.clientHeight - skillDescription.clientHeight), scrolled);
+          }, 0, this);
+          
+          setTimeout(function(that) {
+            skillDescription.style.opacity = '1';
+            that.classList.add('active');
+
+            if (!that.isAnimated) {
+              startAnimateCharts();  
+              that.isAnimated = true;
+            }
+
+          }, SCROLL_TIME, this);
+          
+
+          for (j = 0; j < arrayOfDescriptions.length; j++) {
+            if (arrayOfDescriptions[j].classList.contains(target)) {
+              arrayOfDescriptions[j].classList.add('active');
+            } else {
+              arrayOfDescriptions[j].classList.remove('active');
+            }
+          }
+          
+        }); 
+      })(i);
+    }
+
+
+    document.addEventListener('scroll', function(e) {
+      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
+      tryToStartChartsAnimation();
+    });
+
+
+    function tryToStartChartsAnimation() {
+      //firstChart.offsetTop = 200;
+      var diff = scrolled - (chartsComponent.offsetTop + teamComponent.offsetTop + teamComponent.clientHeight + 200 - window.innerHeight);
+      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
+      isInFieldOfView = (diff > 0 && diff < teamComponent.clientHeight + firstChart.offsetTop + window.innerHeight) //&&
+      console.log(isInFieldOfView);
+      console.log(diff);
+
+      if (isInFieldOfView && !isPlayed && !isScrollingViaMenu) startAnimateCharts();
+    }
+
+
+    
+    function toggleScroll(to, scrolled) {
+      var distance = Math.abs(to - scrolled);
+      var initialDistance = distance;
+      var speed = distance / SCROLL_TIME * 10; // pixels/10ms
+      var step;
+      if (!scrolled && to < 0 || scrolled === to) return;
+      isScrolling = true;
+      if (acceleration) {
+        speed = 0;
+        step = 2 * distance / Math.pow(SCROLL_TIME, 2) * 10;
+      }
+      var scrollInterval = setInterval(function() {
+        distance -= speed;
+        if (acceleration && distance >= initialDistance / 2) {
+          speed += step;
+        } else if (acceleration && distance < initialDistance / 2) {
+          speed = speed > step * 3 ? speed - step : speed;
+        }
+        var positionY = scrolled < to ? to - distance : to + distance;
+        window.scrollTo(0, positionY); 
+        if (distance <= 0) {
+          isScrolling = false;
+          clearInterval(scrollInterval);
+        }
+      }, 10);
+    }
+
+     
+    function startAnimateCharts() {
+      var canvasElements = document.querySelectorAll('.active .chart-canvas');
+      var numberOfPercentsElements = document.querySelectorAll('.active .number-of-percents');
+      var percents = [];
+      var arrayOfChartComponents = [];
+      var i;
+
+      isPlayed = true; 
+
+
+      function ChartComponent(canvas, percent) {
+        this.canvas = canvas;
+        this.percent = percent;
+      }
+
+      ChartComponent.prototype.circ = Math.PI * 2;
+      ChartComponent.prototype.quart = Math.PI / 2;
+
+      ChartComponent.prototype.animate = function(current) {
+        var that = this;
+        this.canvas.ctx.clearRect(0, 0, 2 * this.canvas.x, 2 * this.canvas.y);
+        this.canvas.ctx.beginPath();
+        this.canvas.ctx.strokeStyle = '#707070';
+        this.canvas.ctx.arc(this.canvas.x, this.canvas.y, this.canvas.radius, 0, this.circ, false);
+        this.canvas.ctx.stroke();
+        this.canvas.ctx.beginPath();
+        this.canvas.ctx.strokeStyle = '#ffe600';
+        this.canvas.ctx.arc(this.canvas.x, this.canvas.y, this.canvas.radius, -this.quart, this.circ * current - this.quart, false);
+        this.canvas.ctx.stroke();
+        this.percent.currentValue += 1;
+        this.percent.element.innerText = Math.floor(this.percent.currentValue) + '%'; 
+        if (this.percent.currentValue < this.percent.finalValue) {
+          requestAnimationFrame(function() {
+            that.animate(that.percent.currentValue / 100)
+          });
+        } 
+      }
+
+
+      function CanvasComponent(canvasElement) {
+        this.ctx = canvasElement.getContext('2d');
+        this.ctx.lineWidth = 5;
+        this.ctx.strokeStyle = '#ffe600';
+        this.ctx.shadowOffsetX = 0;
+        this.ctx.shadowOffsetY = 0;
+        this.ctx.shadowBlur = 3;
+        this.ctx.shadowColor = '#656565';
+        
+        this.x = canvasElement.width / 2;
+        this.y = canvasElement.height / 2;
+        this.radius = canvasElement.width / 2 - 10;
+      }
+
+
+      function PercentComponent(numberOfPercentsElement) {
+        this.currentValue = 0;
+        this.finalValue = numberOfPercentsElement.dataset.percentages;
+        this.element = numberOfPercentsElement;
+      }
+
+
+      for (i = 0; i < canvasElements.length; i++) {
+        var canvasComponent = new CanvasComponent(canvasElements[i]);
+        var percentComponent = new PercentComponent(numberOfPercentsElements[i]);
+        var chartComponent = new ChartComponent(canvasComponent, percentComponent);
+        arrayOfChartComponents.push(chartComponent);
+      }
+
+      arrayOfChartComponents.forEach(function(elem) {
+        elem.animate(0);
+      });
+
+    };
+
+  })();
 
 };
