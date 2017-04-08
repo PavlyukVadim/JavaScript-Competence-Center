@@ -9,9 +9,10 @@ window.onload = function() {
     var navItems = document.getElementsByClassName('navbar-nav')[0];
     var navbar = document.getElementsByClassName('navbar')[0];
     var isOpenMobileMenu = false;
-
+    var scrolled = 0;
 
     navIcon.addEventListener('click', function() {
+      if (!this.classList.contains('navbar-toggler')) return;
       navIcon.classList.toggle('open');
       isOpenMobileMenu = !isOpenMobileMenu;
       
@@ -23,10 +24,20 @@ window.onload = function() {
     });
 
     navItems.addEventListener('click', function() {
+      if (!this.classList.contains('navbar-toggler')) return;
       navIcon.classList.toggle('open');
       isOpenMobileMenu = !isOpenMobileMenu;
       navItems.style.height = 0;  
     });
+
+    document.addEventListener('scroll', function() {
+      scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrolled > 0 && window.innerWidth > 768) {
+        navbar.classList.add('navbar-dark');
+      } else {
+        navbar.classList.remove('navbar-dark');
+      }
+    })
     
   })();
 

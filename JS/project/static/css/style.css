@@ -123,13 +123,17 @@ section {
   z-index: 1;
   text-transform: uppercase;
   font-family: Oswald;
-  z-index: 1000; }
+  z-index: 1000;
+  transition: .5s; }
   @media screen and (max-width: 768px) {
     .navbar {
       height: auto; } }
   @media screen and (max-width: 768px) {
     .navbar .container {
       width: 100%; } }
+
+.navbar-dark {
+  background-color: rgba(0, 0, 0, 0.9); }
 
 .fixed {
   position: fixed; }

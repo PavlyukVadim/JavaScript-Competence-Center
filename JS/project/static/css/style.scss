@@ -203,6 +203,7 @@ section {
   text-transform: uppercase;
   font-family: Oswald;
   z-index: 1000;
+  transition: .5s;
 
   @media screen and (max-width: 768px) { 
     height: auto;
@@ -214,7 +215,10 @@ section {
       width: 100%;
     }  
   }
+}
 
+.navbar-dark {
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .fixed {
