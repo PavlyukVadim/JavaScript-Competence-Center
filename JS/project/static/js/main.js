@@ -550,9 +550,10 @@ window.onload = function() {
     var skillDescription = document.getElementsByClassName('skill-description')[0]; 
     var teamComponent = document.getElementById('team-component');
     var chartsComponent = document.getElementById('charts-component');
-    var firstChart = document.querySelectorAll('.active .chart-canvas')[0];
+    var firstChart = document.querySelectorAll('.active .chart')[0];
+    var charts = document.querySelectorAll('.active .charts')[0];
     
-
+    
     var i, j;
     var target;
     var isPlayed = false;
@@ -563,7 +564,7 @@ window.onload = function() {
     var acceleration = true;
     var isScrolling = false;
 
-
+    arrayOfTeamCards[0].isAnimated = true;
     for (i = 0; i < arrayOfTeamCards.length; i++) {
       (function(i) {
         arrayOfTeamCards[i].addEventListener('click', function(e) {
@@ -581,8 +582,7 @@ window.onload = function() {
           target = this.dataset.employee;
           skillDescription.style.opacity = '0';
           this.appendChild(skillDescription);
-          
-          console.log(teamComponent.offsetTop + this.offsetTop - (window.innerHeight - this.clientHeight - skillDescription.clientHeight));
+                    
           setTimeout(function(that) {
             toggleScroll(teamComponent.offsetTop + that.offsetTop - (window.innerHeight - that.clientHeight - skillDescription.clientHeight), scrolled);
           }, 0, this);
@@ -611,7 +611,9 @@ window.onload = function() {
       })(i);
     }
 
+    tryToStartChartsAnimation();
 
+    
     document.addEventListener('scroll', function(e) {
       scrolled = window.pageYOffset || document.documentElement.scrollTop; 
       tryToStartChartsAnimation();
@@ -619,13 +621,11 @@ window.onload = function() {
 
 
     function tryToStartChartsAnimation() {
-      //firstChart.offsetTop = 200;
-      var diff = scrolled - (chartsComponent.offsetTop + teamComponent.offsetTop + teamComponent.clientHeight + 200 - window.innerHeight);
-      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
-      isInFieldOfView = (diff > 0 && diff < teamComponent.clientHeight + firstChart.offsetTop + window.innerHeight) //&&
-      console.log(isInFieldOfView);
-      console.log(diff);
-
+      var activeCard = document.querySelectorAll('.team-cards .active')[0];
+      scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (!activeCard) return;
+      var diff = (scrolled + window.innerHeight - (activeCard.offsetTop + activeCard.clientHeight + chartsComponent.offsetTop + firstChart.offsetTop + 40) - teamComponent.offsetTop);
+      isInFieldOfView = (diff > 0 && diff < window.innerHeight - (charts.clientHeight - chartsComponent.offsetTop));
       if (isInFieldOfView && !isPlayed && !isScrollingViaMenu) startAnimateCharts();
     }
 
