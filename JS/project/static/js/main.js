@@ -152,7 +152,6 @@ window.onload = function() {
     
     document.addEventListener('scroll', function() {
       scrolled = window.pageYOffset || document.documentElement.scrollTop;
-      console.log(scrolled, window.innerHeight);
     });
     
 
