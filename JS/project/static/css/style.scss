@@ -462,6 +462,7 @@ section {
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
+            text-transform: uppercase;
 
             @media screen and (max-width: 400px) { 
               padding: 7px 20px;

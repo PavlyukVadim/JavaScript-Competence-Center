@@ -113,6 +113,7 @@ window.onload = function() {
     var isAutoPlay = true;
     var autoPlayTimer;
     var createAutoPlayTimer;
+    var scrolled = 0;
 
     initiateSlider();
 
@@ -131,24 +132,56 @@ window.onload = function() {
       autoPlay();
     }
 
+
     function autoPlay() {
       autoPlayTimer = setInterval(function() {
-        changeSlide('next');
+        changeSlide('next');        
       }, INTERVAL_AUTOPLAY);
     }
+    
+    document.addEventListener('scroll', function() {
+      scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      console.log(scrolled, window.innerHeight);
+    });
+    
+
+    function isSliderInFieldOfView() {
+      return scrolled < window.innerHeight;
+    }
+
 
     prevBtn.addEventListener('click', function() {
+      if (isAutoPlay) {
+        clearInterval(autoPlayTimer);
+        clearTimeout(createAutoPlayTimer);
+      }
       changeSlide('prev');
+      createAutoPlayTimer = setTimeout(function () {
+        if (isAutoPlay) {
+          changeSlide('next');
+          autoPlay();
+        }
+      }, DELAY_AUTOPLAY);
     });
 
 
     nextBtn.addEventListener('click', function() {
+      if (isAutoPlay) {
+        clearInterval(autoPlayTimer);
+        clearTimeout(createAutoPlayTimer);
+      }
       changeSlide('next');
+      createAutoPlayTimer = setTimeout(function () {
+        if (isAutoPlay) {
+          changeSlide('next');
+          autoPlay();
+        }
+      }, DELAY_AUTOPLAY);
     });
 
 
     function changeSlide(mode) {
-      if (isRunning) {
+      if (isRunning || !isSliderInFieldOfView()) {
         return;
       } else if ((indexOfCurrentSlide === numberOfSlides - 1) || !indexOfCurrentSlide) {
         slider.style.transition = transitionRule; 
