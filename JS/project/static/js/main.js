@@ -578,11 +578,16 @@ window.onload = function() {
     var prevActive = arrayOfTeamCards[0];
 
     var scrolled = 0 || window.pageYOffset || document.documentElement.scrollTop;
-    var SCROLL_TIME = 300; // ms
+    var SCROLL_TIME = 200; // ms
     var acceleration = true;
     var isScrolling = false;
-    var prevScrolled = teamComponent.offsetTop + arrayOfTeamCards[0].offsetTop - (window.innerHeight - arrayOfTeamCards[0].clientHeight - skillDescription.clientHeight) + 200;
-        prevScrolled = scrolled > prevScrolled ? 0 : prevScrolled;
+    var prevScrolled;
+
+    setTimeout(function() {
+      prevScrolled = teamComponent.offsetTop + arrayOfTeamCards[0].offsetTop - (window.innerHeight - arrayOfTeamCards[0].clientHeight - skillDescription.clientHeight);
+      prevScrolled = scrolled > prevScrolled ? 0 : prevScrolled;
+    }, 100);
+    
     var prevPosition = 0;
 
     console.log(scrolled, prevScrolled);
@@ -656,12 +661,13 @@ window.onload = function() {
     
     document.addEventListener('scroll', function(e) {
       scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      console.log(scrolled, prevScrolled);
       if (isScrollToContacts) {
         prevScrolled = undefined;
       }
 
       if (prevScrolled && !isMobile) {
-        if (((scrolled > prevScrolled + 25) && !isScrollingViaMenu) || (scrolled > prevScrolled - 150 && isScrollToClients)) {
+        if (((scrolled > prevScrolled + 25) && !isScrollingViaMenu) || (scrolled > prevScrolled - 250 && isScrollToClients)) {
           skillDescription.style.opacity = '0';
           setTimeout(function() {
             skillDescription.parentElement.removeChild(skillDescription);
