@@ -854,6 +854,7 @@ window.onload = function() {
     var arrayOfControlCircles = [];
     var ANIMATION_DURATION = 1000;
     var indexOfPrevActive = 0;
+    var isChanging = 0;
     
     createControlCircles(reviewsEls.length);
 
@@ -865,7 +866,8 @@ window.onload = function() {
         div.className = 'circle';
         (function(i) {
           div.addEventListener('click', function() {
-            
+            if (isChanging || i == indexOfPrevActive) return;
+            isChanging = true;
             arrayOfControlCircles[indexOfPrevActive].classList.remove('active');
             this.classList.add('active');
             
@@ -876,6 +878,7 @@ window.onload = function() {
               reviewsEls[index].classList.remove('active');
               reviewsEls[i].classList.add('active', 'bounceIn');
               reviewsEls[i].classList.remove('bounceOut');
+              isChanging = false;
             }, ANIMATION_DURATION, indexOfPrevActive);
             
             indexOfPrevActive = i;
