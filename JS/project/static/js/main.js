@@ -2,6 +2,8 @@ window.onload = function() {
   
   var isScrollingViaMenu = false;
   var isScrollToContacts = false;
+  var isScrollToClients = false;
+
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
   (function menuComponent() {
@@ -66,6 +68,8 @@ window.onload = function() {
         return function() {
           if (this.dataset.scrollTo === '#contact-us') {
             isScrollToContacts = true;
+          } else if (this.dataset.scrollTo === '#our-clients-component') {
+            isScrollToClients = true;
           }
           if (!isScrolling) {
             toggleScroll(mapOfTargetElements[navLinks[i].dataset.scrollTo].offsetTop, scrolled);  
@@ -109,6 +113,7 @@ window.onload = function() {
           isScrolling = false;
           isScrollingViaMenu = false;
           isScrollToContacts = false;
+          isScrollToClients = false;
           clearInterval(scrollInterval);
         }
       }, 10);
@@ -655,18 +660,15 @@ window.onload = function() {
         prevScrolled = undefined;
       }
 
-      
       if (prevScrolled && !isMobile) {
-        if (((scrolled > prevScrolled + 25) && !isScrollingViaMenu)) {
+        if (((scrolled > prevScrolled + 25) && !isScrollingViaMenu) || (scrolled > prevScrolled - 150 && isScrollToClients)) {
           skillDescription.style.opacity = '0';
           setTimeout(function() {
             skillDescription.parentElement.removeChild(skillDescription);
           }, 400);
           prevActive.classList.remove('active');
           prevScrolled = undefined;
-        } /*else if (scrolled > prevScrolled - 125 && ) {
-
-        }*/
+        }
       }
       tryToStartChartsAnimation();
     });
