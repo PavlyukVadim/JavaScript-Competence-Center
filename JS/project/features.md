@@ -1,7 +1,7 @@
 Особливості: 
 ```
 1. Усі компоненти ізольовані та придатні для reusability.
-2. Власна сітка - grid.css, (https://github.com/PavlyukVadim/Vanilla-Components/blob/master/Grid/style.scss).
+2. Власна сітка - grid.css, [link](https://github.com/PavlyukVadim/Vanilla-Components/blob/master/Grid/style.scss).
 3. В головному слайдері можливе управління через Drag and drop.
 4. Прокрутка реалізована з прискоренням (максимальна швидкість на середині дистанції).
 5. Інформація про працівника в блоці Team не займає додаткового місця (для зручності на великих екранах).
