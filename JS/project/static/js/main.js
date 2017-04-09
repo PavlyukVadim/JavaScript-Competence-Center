@@ -1,6 +1,7 @@
 window.onload = function() {
   
   var isScrollingViaMenu = false;
+  var isScrollToContacts = false;
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
   (function menuComponent() {
@@ -46,7 +47,7 @@ window.onload = function() {
     
     var navLinks = document.getElementsByClassName('nav-link');
     var navbar = document.getElementsByClassName('navbar')[0];
-    var mapOffsetTop = {};
+    var mapOfTargetElements = {};
     var i;
     var selector;
     var element;
@@ -54,17 +55,20 @@ window.onload = function() {
     var scrolled = 0 || window.pageYOffset || document.documentElement.scrollTop;
     var SCROLL_TIME = 400; // ms
     var acceleration = true;
-    var isScrolling = false;
-    
+    var isScrolling = false; 
+
 
     for (i = 0; i < navLinks.length; i++) {
       selector = navLinks[i].dataset.scrollTo;
       element = document.querySelectorAll(selector)[0];
-      mapOffsetTop[selector] = element.offsetTop;
+      mapOfTargetElements[selector] = element;
       navLinks[i].onclick = (function(i) {
         return function() {
+          if (this.dataset.scrollTo === '#contact-us') {
+            isScrollToContacts = true;
+          }
           if (!isScrolling) {
-            toggleScroll(mapOffsetTop[navLinks[i].dataset.scrollTo], scrolled);  
+            toggleScroll(mapOfTargetElements[navLinks[i].dataset.scrollTo].offsetTop, scrolled);  
           }
         }
       })(i);
@@ -87,6 +91,7 @@ window.onload = function() {
       var step;
       isScrolling = true;
       isScrollingViaMenu = true;
+
       if (acceleration) {
         speed = 0;
         step = 2 * distance / Math.pow(SCROLL_TIME, 2) * 10;
@@ -103,6 +108,7 @@ window.onload = function() {
         if (distance <= 0) {
           isScrolling = false;
           isScrollingViaMenu = false;
+          isScrollToContacts = false;
           clearInterval(scrollInterval);
         }
       }, 10);
@@ -570,10 +576,11 @@ window.onload = function() {
     var SCROLL_TIME = 300; // ms
     var acceleration = true;
     var isScrolling = false;
-    var prevScrolled = teamComponent.offsetTop + arrayOfTeamCards[0].offsetTop - (window.innerHeight - arrayOfTeamCards[0].clientHeight - skillDescription.clientHeight) + 100;
+    var prevScrolled = teamComponent.offsetTop + arrayOfTeamCards[0].offsetTop - (window.innerHeight - arrayOfTeamCards[0].clientHeight - skillDescription.clientHeight) + 200;
         prevScrolled = scrolled > prevScrolled ? 0 : prevScrolled;
     var prevPosition = 0;
 
+    console.log(scrolled, prevScrolled);
     arrayOfTeamCards[0].isAnimated = true;
     for (i = 0; i < arrayOfTeamCards.length; i++) {
       (function(i) {
@@ -644,15 +651,22 @@ window.onload = function() {
     
     document.addEventListener('scroll', function(e) {
       scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (isScrollToContacts) {
+        prevScrolled = undefined;
+      }
+
+      
       if (prevScrolled && !isMobile) {
-        if (scrolled > ~~prevScrolled + 25) {
+        if (((scrolled > prevScrolled + 25) && !isScrollingViaMenu)) {
           skillDescription.style.opacity = '0';
           setTimeout(function() {
             skillDescription.parentElement.removeChild(skillDescription);
           }, 400);
           prevActive.classList.remove('active');
           prevScrolled = undefined;
-        }
+        } /*else if (scrolled > prevScrolled - 125 && ) {
+
+        }*/
       }
       tryToStartChartsAnimation();
     });
@@ -660,7 +674,6 @@ window.onload = function() {
 
     function tryToStartChartsAnimation() {
       var activeCard = document.querySelectorAll('.team-cards .active')[0];
-      scrolled = window.pageYOffset || document.documentElement.scrollTop;
       if (!activeCard) return;
       var diff = (scrolled + window.innerHeight - (activeCard.offsetTop + activeCard.clientHeight + chartsComponent.offsetTop + firstChart.offsetTop + 40) - teamComponent.offsetTop);
       isInFieldOfView = (diff > 0 && diff < window.innerHeight - (charts.clientHeight - chartsComponent.offsetTop));
@@ -694,6 +707,7 @@ window.onload = function() {
           clearInterval(scrollInterval);
           if (to > scrolled) {
             prevScrolled = positionY;
+            console.log('prevScrolled', prevScrolled);
           }
         }
       }, 10);
