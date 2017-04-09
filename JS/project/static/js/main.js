@@ -78,7 +78,7 @@ window.onload = function() {
 
     function toggleScroll(to, scrolled) {
       if (!isMobile) {
-        to = to - navbar.clientHeight;  
+        to = to - navbar.clientHeight;
       }
       
       var distance = Math.abs(to - scrolled);
@@ -483,10 +483,9 @@ window.onload = function() {
 
 
     function tryToStart() {
-      var diff = scrolled - (statisticsComponent.offsetTop + firstNumber.offsetTop - window.innerHeight);
       scrolled = window.pageYOffset || document.documentElement.scrollTop; 
-      isInFieldOfView = (diff > 0 && diff < statisticsComponent.clientHeight - firstNumber.offsetTop + window.innerHeight) //&&
-      //console.log(isInFieldOfView);
+      var diff = scrolled - (statisticsComponent.offsetTop + firstNumber.offsetTop - window.innerHeight);
+      isInFieldOfView = (diff > 0 && diff < statisticsComponent.clientHeight - firstNumber.offsetTop + window.innerHeight);
       if (isInFieldOfView && !isPlayed && !isScrollingViaMenu) start();
     }
 
@@ -571,41 +570,62 @@ window.onload = function() {
     var SCROLL_TIME = 300; // ms
     var acceleration = true;
     var isScrolling = false;
+    var prevScrolled = teamComponent.offsetTop + arrayOfTeamCards[0].offsetTop - (window.innerHeight - arrayOfTeamCards[0].clientHeight - skillDescription.clientHeight) + 100;
+        prevScrolled = scrolled > prevScrolled ? 0 : prevScrolled;
+    var prevPosition = 0;
 
     arrayOfTeamCards[0].isAnimated = true;
     for (i = 0; i < arrayOfTeamCards.length; i++) {
       (function(i) {
         arrayOfTeamCards[i].addEventListener('click', function(e) {
+          
           if (isScrolling) return;
           if (e.target.classList.contains('close-btn')) {
-            skillDescription.parentElement.removeChild(skillDescription);
+            skillDescription.style.opacity = '0';
             this.classList.remove('active');
+            setTimeout(function() {
+              skillDescription.parentElement.removeChild(skillDescription);
+            }, 400);
+            if (!isMobile && prevPosition) {
+              setTimeout(function() {           
+                toggleScroll(prevPosition, scrolled);
+                prevPosition = 0;
+              }, 0); 
+            }
             return;
           } else if (e.target.tagName !== 'IMG') {
             return;
           }
-
           prevActive.classList.remove('active');
           prevActive = this;
           target = this.dataset.employee;
           skillDescription.style.opacity = '0';
           this.appendChild(skillDescription);
-                    
-          setTimeout(function(that) {
-            toggleScroll(teamComponent.offsetTop + that.offsetTop - (window.innerHeight - that.clientHeight - skillDescription.clientHeight), scrolled);
-          }, 0, this);
           
-          setTimeout(function(that) {
+          if (!isMobile) {
+            setTimeout(function(that) {
+              prevPosition = scrolled;
+              toggleScroll(teamComponent.offsetTop + that.offsetTop - (window.innerHeight - that.clientHeight - skillDescription.clientHeight), scrolled);
+            }, 0, this);  
+
+            setTimeout(function(that) {
+              skillDescription.style.opacity = '1';
+              that.classList.add('active');
+
+              if (!that.isAnimated) {
+                startAnimateCharts();  
+                that.isAnimated = true;
+              }
+
+            }, SCROLL_TIME, this);
+
+          } else {
+            prevScrolled = teamComponent.offsetTop + this.offsetTop - (window.innerHeight - this.clientHeight - skillDescription.clientHeight);
+            console.log('Prevscroled', prevScrolled);
             skillDescription.style.opacity = '1';
-            that.classList.add('active');
-
-            if (!that.isAnimated) {
-              startAnimateCharts();  
-              that.isAnimated = true;
-            }
-
-          }, SCROLL_TIME, this);
-          
+            this.classList.add('active');
+          }         
+                    
 
           for (j = 0; j < arrayOfDescriptions.length; j++) {
             if (arrayOfDescriptions[j].classList.contains(target)) {
@@ -623,7 +643,17 @@ window.onload = function() {
 
     
     document.addEventListener('scroll', function(e) {
-      scrolled = window.pageYOffset || document.documentElement.scrollTop; 
+      scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (prevScrolled && !isMobile) {
+        if (scrolled > ~~prevScrolled + 25) {
+          skillDescription.style.opacity = '0';
+          setTimeout(function() {
+            skillDescription.parentElement.removeChild(skillDescription);
+          }, 400);
+          prevActive.classList.remove('active');
+          prevScrolled = undefined;
+        }
+      }
       tryToStartChartsAnimation();
     });
 
@@ -634,7 +664,7 @@ window.onload = function() {
       if (!activeCard) return;
       var diff = (scrolled + window.innerHeight - (activeCard.offsetTop + activeCard.clientHeight + chartsComponent.offsetTop + firstChart.offsetTop + 40) - teamComponent.offsetTop);
       isInFieldOfView = (diff > 0 && diff < window.innerHeight - (charts.clientHeight - chartsComponent.offsetTop));
-      if (isInFieldOfView && !isPlayed && !isScrollingViaMenu) startAnimateCharts();
+      if (isInFieldOfView && !isPlayed && !isScrollingViaMenu && !isMobile) startAnimateCharts();
     }
 
 
@@ -662,6 +692,9 @@ window.onload = function() {
         if (distance <= 0) {
           isScrolling = false;
           clearInterval(scrollInterval);
+          if (to > scrolled) {
+            prevScrolled = positionY;
+          }
         }
       }, 10);
     }
