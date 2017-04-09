@@ -5,6 +5,7 @@ window.onload = function() {
   var isScrollToClients = false;
 
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
 
   (function menuComponent() {
     
@@ -64,6 +65,10 @@ window.onload = function() {
       selector = navLinks[i].dataset.scrollTo;
       element = document.querySelectorAll(selector)[0];
       mapOfTargetElements[selector] = element;
+      if (isSafari && selector == '#portfolio-filter-component') {
+        navLinks[i].style.display = 'none';
+      }
+
       navLinks[i].onclick = (function(i) {
         return function() {
           if (this.dataset.scrollTo === '#contact-us') {
@@ -358,6 +363,7 @@ window.onload = function() {
 
 
   (function portfolioFilterComponent() {
+    var portfolioFilterElement = document.getElementById('portfolio-filter-component');
     var chooseButtons = document.getElementsByClassName('btn-choose-cat');
     var portfolioTiles = document.getElementsByClassName('tile');
     var descsOfPortfolioTiles = document.getElementsByClassName('work-desc');
@@ -368,6 +374,10 @@ window.onload = function() {
     var fillingOfTiles = createArrayOfFillingOfTiles(numberOfTilesInRow, portfolioTiles.length);
     var btnRel;
     var i;
+    
+    if (isSafari) {
+      portfolioFilterElement.style.display = 'none';
+    }
 
     for (i = 0; i < chooseButtons.length; i++) {
       chooseButtons[i].onclick = function() {
