@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="inputApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css">
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css">
+  <script src="../../../Libraries/angular.js"></script>
+
+  <script>
+    var model = "Hello world";
+    
+    angular.module("inputApp", [])
+           .controller("inputController", inputController);
+
+    function inputController() {
+      var vm = this;
+      vm.value = model;
+      vm.currentValue = model;
+  
+      vm.changeValue = function() {
+        vm.value = vm.currentValue;
+      }
+    }
+
+  </script>
+</head>
+<body ng-controller="inputController as input">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="input.currentValue">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="input.changeValue()">Go!</button>
+      </span>
+    </div>
+    <p id="output">{{input.value}}</p>
+  </div>
+</body>
+</html>
