@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo-List</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="app.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.module.js"></script>
+	<script>
+		var model = [{
+			name: 'Купити молоко',
+			description: 'Купити молоко в магазині',
+			date: '2/18/2015',
+			completed: false
+		}];
+
+	</script>
+	<script src="todo-list/todo-list.module.js"></script>
+	<script src="todo-list/todo-list.component.js"></script>
+</head>
+<body>
+	<todo-list></todo-list>
+</body>
+</html>

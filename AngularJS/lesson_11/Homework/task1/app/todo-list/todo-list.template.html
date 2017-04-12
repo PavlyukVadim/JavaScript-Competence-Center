@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h3>ToDo List</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="task in $ctrl.tasks">
+      <td>{{task.name}}</td>
+      <td>{{task.description}}</td>
+      <td>{{task.date}}</td>
+      <td>{{task.completed}}</td>
+    </tr>
+  </table>
+
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="input-group">
+        <h3>Name</h3>
+        <input type="text" class="form-control" ng-model="$ctrl.name">
+        <h3>Due Date</h3>
+        <input type="date" class="form-control" ng-model="$ctrl.dueDate">
+        <h3>Description</h3>
+        <textarea name="name" class="form-control" ng-model="$ctrl.description"></textarea>
+        <h3>Completed
+          <input type="checkbox" ng-model="$ctrl.done">
+        </h3>
+        <input type="button" class="btn btn-primary" value="Add" ng-click="$ctrl.addNewTask()">
+      </div>
+    </div>
+  </div>
+</div>
