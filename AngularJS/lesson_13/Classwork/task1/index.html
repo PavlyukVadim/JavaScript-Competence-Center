@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="classApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+    
+    angular.module("classApp", [])
+           .controller("classController", classController);
+
+    function classController($scope) {
+      
+      $scope.model = {};
+      $scope.model.styleObj = {
+        green: false,
+        circle: false, 
+      };
+
+      $scope.model.addClasses = function() {
+        this.styleObj.green = true;
+        this.styleObj.circle = true;
+        console.log( $scope.model.styleObj);
+      };
+
+    }
+
+  </script>
+  
+  <style>
+    .green {
+      background-color: green;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: #000;
+      transition: .5s;
+    }
+
+    input {
+      width: 100px;
+      margin-top: 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <section id="class-component" class="container" ng-controller="classController">
+    <h1>classApp</h1>
+    <div ng-class="model.styleObj"></div>
+    <input type="button" ng-click="model.addClasses()" value="Add class">
+  </section>
+</body>
+</html>
