@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calcApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo-List</title>
+	<link rel="stylesheet" href="./libs/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="./libs/bootstrap.css"/>
+	<script src="./libs/angular.js"></script>
+  
+  <link rel="stylesheet" href="app.css">
+
+  <script src="app.module.js"></script>
+
+	<script src="./calc/calc.model.js"></script>
+	<script src="./calc/calc.controller.js"></script>
+</head>
+<body>
+	<div class="container" ng-controller="calcController" ng-cloak>
+		<div class="row">
+			<div class="calculator-wrapper">
+				<div class="output">
+					<input type="number" ng-model="model.value1" ng-change="model.getResult()">
+					<span id="operation">{{model.currOperation}}</span>
+					<input type="number" ng-model="model.value2" ng-change="model.getResult()">
+					<span class="result">= {{model.result}}</span>
+				</div>
+				<div class="control-panel">
+					<input type="button" value=" + " ng-click="model.Pl()">
+					<input type="button" value=" - " ng-click="model.Mn()">
+					<input type="button" value=" * " ng-click="model.Ml()">
+					<input type="button" value=" / " ng-click="model.Dv()">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
