@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
  	<script>
     
     angular.module("tableApp", [])
@@ -36,21 +36,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Name <input type="checkbox" ng-model="displayItems.isname"></th>
-        <th>Price <input type="checkbox" ng-model="displayItems.isprice"></th>
-        <th>Category <input type="checkbox" ng-model="displayItems.iscategory"></th>
-        <th>Count <input type="checkbox" ng-model="displayItems.iscount"></th>
-        <th>Tax <input type="checkbox" ng-model="displayItems.istax"></th>
-        <th>Expiration <input type="checkbox" ng-model="displayItems.isexpiration"></th>
+        <th ng-repeat="(key, value) in items[0]">{{key}} <input type="checkbox" ng-model="displayItems['is' + key]"></th>
       </tr>
     </thead>
     <tr ng-repeat="item in items">
-      <td ng-switch="displayItems.isname"><span ng-switch-when="true">{{item.name}}</span></td>
-      <td ng-switch="displayItems.isprice"><span ng-switch-when="true">{{item.price}}</span></td>
-      <td ng-switch="displayItems.iscategory"><span ng-switch-when="true">{{item.category}}</span></td>
-      <td ng-switch="displayItems.iscount"><span ng-switch-when="true">{{item.count}}</span></td>
-      <td ng-switch="displayItems.istax"><span ng-switch-when="true">{{item.tax}}</span></td>
-      <td ng-switch="displayItems.isexpiration"><span ng-switch-when="true">{{item.expiration}}</span></td>
+      <td ng-repeat="(key, value) in item">
+        <ng-include src="displayItems['is' + key] ? 'templates/' + key + '.html' : ''"></ng-include>
+      </td>
     </tr>
   </table>
 </body>
