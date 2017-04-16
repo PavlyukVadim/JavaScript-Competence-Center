@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filterApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  
+  <script>
+
+    var model = {
+      items: [{ name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+              { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+              { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+              { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }]
+    };
+    
+    angular.module("filterApp", [])
+           .controller("tableController", tableController);
+
+    function tableController($scope) {
+      $scope.model = model;
+    }
+
+  </script>
+
+</head>
+<body>
+  <section id="table-component" class="container" ng-controller="tableController">
+    <h1>filterApp</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th ng-repeat="(key, value) in model.items[0]">{{key}}</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="item in model.items | orderBy : 'name'">
+        <td ng-repeat="(key, value) in item">
+          <span ng-if="key==='tax'">{{value | currency}}</span>
+          <span ng-if="key!=='tax'">{{value}}</span>
+        </td>
+      </tr>
+    </table>
+  </section>
+</body>
+</html>
