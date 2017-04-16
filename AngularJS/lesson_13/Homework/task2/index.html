@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filterApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+    
+    var model = {
+      divs: ['Lorem ipsum dolor sit amet',
+             'consectetur adipiscing elit, sed do',
+             'eiusmod tempor incididunt ut',
+             'labore et dolore magna aliqua',
+             'Ut enim ad minim veniam',
+             'nostrud exercitation ullamco laboris',
+             'nisi ut aliquip ex ea commodo',
+             'dolor in reprehenderit in voluptate',
+             'velit esse cillum dolore eu fugiat',
+             'sint occaecat cupidatat non proident, sunt in culpa ']
+    }; 
+
+    angular.module("filterApp", [])
+           .controller("filterController", filterController)
+           .filter("filterByContent", filterByContent);
+
+    function filterController($scope) {
+      $scope.model = model;
+      $scope.model.filterContent = '';
+
+      $scope.getFilterContent = function() {
+        $scope.model.filterContent = $scope.model.searchText;
+      }
+    }
+
+    function filterByContent() {
+      return function (arr) {
+        return arr.filter(function(divContent) {
+          return (!model.filterContent) || (model.filterContent === divContent);
+        });
+      }
+    }
+
+  </script>
+  <style>
+    div {
+      font-size: 20px;
+    }
+    input[type="text"] {
+      width: 80%;
+      margin: 10px 0;
+    }
+    .even {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <section id="filter-component" class="container" ng-controller="filterController">
+    <h1>filterApp</h1>
+    <div ng-repeat="divContent in model.divs | filterByContent">
+      <span ng-class-even="'even'">{{$index + 1 + ' : ' + divContent}}</span>
+    </div>
+    <input type="text" class="input-lg" placeholder="search..." ng-model="model.searchText">
+    <input type="button" class="btn btn-primary" value="Filter" ng-click="getFilterContent()">
+  </section>
+</body>
+</html>
