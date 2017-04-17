@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+    
+    angular.module("myApp", [])
+           .controller("mainController", mainController)
+           .factory('mathServFactory', mathServFactory)
+           .provider('mathServPrv', mathServPrv)
+           .service('mathServService', mathServService)
+
+    function mainController($scope, mathServFactory, mathServPrv, mathServService) {
+      console.log(mathServFactory().add(5, 5));
+      console.log(mathServPrv().subtract(10, 8));
+      console.log(mathServService.multiply(5, 3));
+    }
+
+    
+    function mathServFactory() {
+      
+      var add = function(a, b) {
+        return a + b;
+      };
+
+      var subtract = function(a, b) {
+        return a - b;
+      };
+
+      var divide = function(a, b) {
+        return a / b;
+      };
+
+      var multiply = function(a, b) {
+        return a * b;
+      };
+
+      return function() {
+        return {
+          add: add,
+          subtract: subtract,
+          divide: divide,
+          multiply, multiply,
+        };
+      }
+    }
+
+
+    function mathServPrv() {
+      return {
+        $get: function() {
+
+          var add = function(a, b) {
+            return a + b;
+          };
+
+          var subtract = function(a, b) {
+            return a - b;
+          };
+
+          var divide = function(a, b) {
+            return a / b;
+          };
+
+          var multiply = function(a, b) {
+            return a * b;
+          };
+
+          return function() {
+            return {
+              add: add,
+              subtract: subtract,
+              divide: divide,
+              multiply, multiply,
+            };
+          }
+        }
+      }
+    }
+
+
+    function mathServService() {
+      this.add = function(a, b) {
+        return a + b;
+      };
+      this.subtract = function(a, b) {
+        return a - b;
+      };
+      this.divide = function(a, b) {
+        return a / b;
+      };
+      this.multiply = function(a, b) {
+        return a * b;
+      };
+    }
+
+
+  </script>
+</head>
+<body>
+  <section class="container" ng-controller="mainController"></section>
+</body>
+</html>
