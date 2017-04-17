@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo-List</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="app.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <script src="app.module.js"></script>
+
+	<script src="todo-list/todo-list.module.js"></script>
+  <script src="todo-list/todo-list.model.js"></script>
+	<script src="todo-list/todo-list.controller.js"></script>
+	<script src="todo-list/todo-list.service.js"></script>
+</head>
+<body>
+	<section id="todo-list" ng-controller="todoController" ng-cloak>
+		<div class="container">
+		  <h3>ToDo List</h3>
+		  <table class="table">
+		    <thead>
+		      <tr>
+		        <th>Name</th>
+		        <th>Description</th>
+		        <th>Date</th>
+		        <th>Completed</th>
+		        <th></th>
+		      </tr>
+		    </thead>
+		    <tr ng-repeat="task in model.tasks">
+		      <td>{{task.name}}</td>
+		      <td>{{task.description}}</td>
+		      <td>{{task.date | date:'MM/dd/yyyy'}}</td>
+		      <td>{{task.completed}}</td>
+		      <td><input type="button" class="btn btn-primary" value="Edit" ng-click="editTask(task, $index)"></td>
+		    </tr>
+		  </table>
+		  <div class="col-lg-12">
+		    <div class="row">
+		      <div class="input-group">
+		        <h3>Name</h3>
+		        <input type="text" class="form-control" ng-model="name">
+		        <h3>Due Date</h3>
+		        <input type="date" class="form-control" ng-model="dueDate">
+		        <h3>Description</h3>
+		        <textarea name="name" class="form-control" ng-model="description"></textarea>
+		        <h3>Completed
+		        <input type="checkbox" ng-model="done">
+		        </h3>
+		        <input ng-if="!editMode" type="button" class="btn btn-primary" value="Add" ng-click="addNewTask()">
+		        <input ng-if="editMode" type="button" class="btn btn-primary" value="Save" ng-click="saveChangesInTask()">
+		      </div>
+		    </div>
+		  </div>
+		  <div ng-if="dataJson">Data for sending : {{dataJson}}</div>
+		</div>
+	</section>
+</body>
+</html>
