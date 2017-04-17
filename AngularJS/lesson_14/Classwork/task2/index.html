@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+    
+    angular.module("myApp", [])
+           .controller("mainController", mainController)
+           .provider('clickCounter', clickCounter)
+           .config(function (clickCounterProvider) {
+              clickCounterProvider.enableCounterLimit(true, 10);
+            });
+
+    function mainController($scope, clickCounter) {
+      $scope.click = function() {
+        clickCounter();
+      }
+    }
+
+    function clickCounter() {
+
+      var limitCount = false;
+      var limit = null;
+
+      return {
+        enableCounterLimit: function (setting, value) {
+          if (angular.isDefined(setting)) {
+            limitCount = setting;
+            if (angular.isDefined(value)) {
+              if (limitCount == true) {
+                limit = value;
+                return limit;
+              }
+            }
+          }
+        },
+
+        $get: function () {
+          var clickCounter = 1;
+
+          return function () {
+            if (limit && clickCounter < limit || limit == null) {
+              console.log('clicks: ', clickCounter++);
+            }
+            else {
+              console.log('count limit exceeded!');
+            }
+          };
+        }
+      };
+    }
+
+  </script>
+  <style>
+    input {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <section class="container" ng-controller="mainController">
+    <input type="button" class="btn btn-primary" ng-click="click()" value="Click">
+  </section>
+</body>
+</html>

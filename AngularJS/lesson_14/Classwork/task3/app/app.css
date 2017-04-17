@@ -1,0 +1,89 @@
+body {
+    padding: 30px;
+}
+
+ul {
+    margin-left: -40px;
+}
+
+
+.tests_block {
+    margin: 0 0 50px;
+    line-height: 1.6em;
+}
+
+.text_center {
+    text-align: center;
+}
+
+.desc_step_test {
+    text-transform: uppercase;
+    margin: 0 0 15px;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.test_item_block .count_sliders {
+    margin: 0 0 5px;
+    font-size: 1.466em;
+    line-height: 1em;
+}
+
+.test_img_wrap {
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+}
+
+.test_images {
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    margin: 10px -1% 0;
+    padding: 20px;
+}
+
+
+.test_images li {
+    float: left;
+    width: 48%;
+    margin: 0 1% 20px;
+    height: 146px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.test_images li input[type="radio"] {
+    display: none;
+}
+
+.test_images li input[type="radio"]:checked+img {
+    border: 3px solid #ff5d55;
+    padding: 0;
+}
+
+.test_images li img {
+    width: 146px;
+    max-height: 146px;
+    max-width: 146px;
+    padding: 3px;
+}
+
+.input_answer input {
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+.choose-question {
+	display: inline-block;
+	margin-right: 50px;
+}
+
+#instructions {
+	margin-bottom:10px; 
+	font-weight:bold;
+	font-size:16px;
+	text-transform: uppercase;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8" />
+	<link rel="stylesheet" href="./libs/bootstrap-theme.css"/>
+	<link rel="stylesheet" href="./libs/bootstrap.css"/>
+	<link rel="stylesheet" href="app.css">
+
+  <script src="./libs/angular.js"></script>
+  <script>
+    angular.module('myApp', [])
+    .controller('mainController', mainController);
+
+    function mainController($scope, $http) {
+      $scope.getItems = function () {
+        $http.get('data/data.json')
+             .then(function(response) {
+                console.log("Status: " + response.status);
+                $scope.items = response.data;
+             })
+             .catch(function(error) {
+                console.error(error.status);
+                console.error(error.statusText);
+             })
+      }       
+    }
+
+  </script>
+</head>
+<body>
+  <div class="panel panel-primary" ng-controller="mainController" ng-cloak>
+    <div class="panel-heading">
+      <div class="panel-title">
+        <button class="btn btn-primary" ng-click="getItems()">
+          <h2>Get Items!</h2>
+        </button>
+      </div>
+    </div>
+    <table class="table">
+      <tr ng-repeat="item in items">
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
