@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+  <meta charset="utf-8" />
+	<link rel="stylesheet" href="./libs/bootstrap-theme.css"/>
+	<link rel="stylesheet" href="./libs/bootstrap.css"/>
+	<script src="./libs/angular.js"></script>
+
+	<link rel="stylesheet" href="app.css">
+	<script src="app.module.js"></script>
+
+  <script src="./test/test.model.js"></script>
+	<script src="./test/test.controller.js"></script>
+</head>
+<body>
+	<section id="test-degree-of-contrast" ng-controller="testController" ng-cloak>
+    <div class="container">
+      <div class="headline_title clear_fix">
+        <div class="title">
+          Тест на степень контраста
+        </div>
+      </div>
+      <p id="instructions">Соблюдайте следующие условия, чтобы получить объективный &nbsp; результат тестирования:</p>
+      <ul class="list_green_before">
+        <li>Дистанция между глазами и экраном не должна быть меньше 50-70 см.</li>
+        <li>Во время теста нельзя щуриться. Старайтесь держать голову ровно. Следите, чтобы монитор и глаза находились на одном уровне.</li>
+      </ul>
+      <div class="tests_block" id="contrast_test">
+        <div class="choose-question" ng-repeat="i in [1, 2, 3, 4, 5]">
+          <label>
+            <input type="radio" ng-model="$parent.indexOfCurrentQuestion" value="{{i}}"> Question #{{i}}
+          </label>
+        </div>
+        <div class="test_item_block text_center" ng-repeat="question in model.questions" ng-switch on="indexOfCurrentQuestion==$index+1">
+          <div ng-switch-when="true">
+            <p class="desc_step_test">{{question.condition}}</p>
+            <p class="count_sliders">{{$index + 1}}/5</p>
+            <form action="" class="form_validate">
+              <div class="test_img_wrap">
+                <ul class="test_images">
+                  <li ng-repeat="i in [1, 2, 3, 4]">
+                    <label>
+                      <input type="radio" ng-model="answers[$parent.$index]" value="{{i}}">
+                      <img ng-src="/images/contrast-sensitivity/{{i + ($parent.$index * 4)}}.jpg">
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="input_answer">
+          <input class="btn test_btn btn-primary" type="button" value="Результат" ng-click="showResult()">
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
