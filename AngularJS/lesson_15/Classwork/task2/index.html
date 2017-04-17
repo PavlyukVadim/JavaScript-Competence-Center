@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+
+    var model = {};
+    
+    angular.module("myApp", [])
+           .controller("mainController", mainController)           
+
+    function mainController($scope, $interval) {
+      var promise;
+
+      $scope.model = model;
+      $scope.time = 0;
+      
+      
+      $scope.startTimer = function() {
+        $scope.time = 0;
+        if (!promise || promise.$$state.value === 'canceled') {
+          promise = $interval(function () {
+            $scope.time++;
+          }, 1000);
+        }
+      }
+
+      $scope.stopTimer = function() {
+        $interval.cancel(promise);
+      }
+    }
+
+  </script>
+  <style>
+    section {
+      margin-top: 100px;
+    }
+    .btn {
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <section class="container" ng-controller="mainController">
+    <h1 class="output">The time is: {{time}}</h1>
+    <input type="button" class="btn btn-success" value="Start" ng-click="startTimer()">
+    <input type="button" class="btn btn-danger" value="Stop" ng-click="stopTimer()">
+  </section>
+</body>
+</html>
