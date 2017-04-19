@@ -10,7 +10,7 @@
 	  	<th>email</th>
 	  	<th>employed</th>
 	  </tr>
-	  <tr ng-repeat="item in model">
+	  <tr ng-repeat="item in model" ng-click="goTo(item)">
 	  	<td>{{item.name}}</td>
 	  	<td>{{item.age}}</td>
 	  	<td>{{item.email}}</td>

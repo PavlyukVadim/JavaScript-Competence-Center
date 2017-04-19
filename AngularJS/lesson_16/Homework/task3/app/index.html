@@ -28,8 +28,9 @@
                   templateUrl: 'views/home.html',
                   controller: 'homeController'
                 })
-                .when('/contact', {
-                  templateUrl: 'views/contact.html'
+                .when('/contact/:name/:age/:email/:employed', {
+                  templateUrl: 'views/contact.html',
+                  controller: 'contactController'
                 })
                 .otherwise({
                 	redirectTo: '/'
@@ -38,18 +39,35 @@
                 $locationProvider.html5Mode(true);
                 
             })
-            .controller('mainController', function ($scope, $location) {
-              $scope.goHome = function () {
-                $location.path('/home');
-              }
-              $scope.goToContact = function () {
-                $location.path('/contact')
-              }
-            })
-            .controller('homeController', homeController);
+            .controller('mainController', mainController)
+            .controller('homeController', homeController)
+            .controller('contactController', contactController);
 
-    function homeController($scope) {
+
+    function mainController($scope, $location) {
+      $scope.goHome = function () {
+        $location.path('/home');
+      }
+      $scope.goToContact = function () {
+        $location.path('/contact')
+      }
+    }
+
+    
+    function homeController($scope, $location) {
       $scope.model = model;
+      $scope.goTo = function(item) {
+        $location.path('/contact/' + item.name + '/' + item.age + '/' + item.email + '/' + item.employed);
+      }
+    }
+
+    function contactController($scope, $routeParams) {
+      $scope.currentItem = {
+        name: $routeParams.name,
+        age: $routeParams.age,
+        email: $routeParams.email,
+        employed: $routeParams.employed
+      }
     }
 
   </script>
