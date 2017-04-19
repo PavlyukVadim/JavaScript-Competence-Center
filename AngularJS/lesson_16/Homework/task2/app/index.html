@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <base href="/" />
+	<meta charset="UTF-8">
+	<title>ToDo-List</title>
+	<link rel="stylesheet" href="./libs/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="./libs/bootstrap.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <link rel="stylesheet" href="app.css">
+	<script>
+    
+    var model = [{name: 'Vasya', age: 20, email: 'vasya@mail.ru', employed: false}, 
+                 {name: 'Masha', age: 25, email: 'm@m', employed: true}, 
+                 {name: 'Petya', age: 27, email: 'petya@stuff', employed: true}, 
+                 {name: 'John', age: 36, email: 'johnDoe@mail', employed: true},
+                 {name: 'Jane', age: 28, email: 'janeDoe@mail', employed: false}];
+
+     angular.module("myApp", ['ngRoute'])
+            .config(function ($routeProvider, $locationProvider) {
+              
+              $routeProvider
+              	.when('/', {
+                  templateUrl: 'views/index.html'
+                })
+                .when('/home', {
+                  templateUrl: 'views/home.html',
+                  controller: 'homeController'
+                })
+                .when('/contact', {
+                  templateUrl: 'views/contact.html'
+                })
+                .otherwise({
+                	redirectTo: '/'
+            		})
+
+                $locationProvider.html5Mode(true);
+                
+            })
+            .controller('mainController', function ($scope, $location) {
+              $scope.goHome = function () {
+                $location.path('/home');
+              }
+              $scope.goToContact = function () {
+                $location.path('/contact')
+              }
+            })
+            .controller('homeController', homeController);
+
+    function homeController($scope) {
+      $scope.model = model;
+    }
+
+  </script>
+  <style>
+    section {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+	<div class="panel panel-primary well" ng-controller="mainController">
+    <ul class="nav nav-tabs">
+      <li><a href="" ng-click="goHome()">home</a></li>
+      <li><a href="" ng-click="goToContact()">contact</a></li> 
+    </ul>
+  </div>
+  <div class="panel" ng-view></div>
+</body>
+</html>
