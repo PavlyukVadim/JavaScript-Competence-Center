@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+
+    var model = {
+      items: [{ name: "Table", price: 44.10 },
+              { name: "Chair", price: 21.20 },
+              { name: "Pillow", price: 12.20 },
+              { name: "Picture", price: 112.70 },
+              { name: "Lamp", price: 28.31 }]
+    };
+    
+    angular.module('myApp', [])
+           .controller('myController', myController)
+           .directive('arrayToList', arrayToList);
+
+    function myController($scope) {
+      $scope.model = model;
+    }
+
+    function arrayToList() {
+      return function(scope, element, attr) {
+        //var arr = eval(attr[array]);
+        console.log(attr[array]);
+        if (angular.isDefined(arr)) {
+          var list = angular.element('<ul>');
+          var i;
+          element.append(list);
+          for (i = 0; i < arr.length; i++) {
+            var item = angular.element('<li>');
+            item.text(arr[i].name + ' ' + arr[i].price);
+            list.append(item);
+          }
+        }
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <section id="class-component" class="container" ng-controller="myController">
+    <h1>arrayToListApp</h1>
+      <array-to-list array="model.items"></array-to-list>  
+  </section>
+</body>
+</html>
