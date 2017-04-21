@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+      <script>
+        angular.module("myApp", [])
+        .controller("mainCtrl", function ($scope) {
+            $scope.items = [
+                {name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10},
+                {name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12},
+                {name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5},
+                {name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10}
+            ];
+        })
+        .directive("createTable", function () {
+              return {
+                  restrict: "A",
+                  scope: {
+                      data: "=createTable"
+                  },
+                  link: function (scope, element, attributes) {
+                      var data = scope.data;
+                      if (angular.isDefined(data)) {
+                          var table = angular.element("<table class='table'>");
+                          var thead = angular.element("<thead>");
+                          var tbody = angular.element("<tbody>");
+                          var rowhead = angular.element("<tr>");
+                          for (var key in data[0]) {
+                              rowhead.append(angular.element("<td>").text(key));
+                              thead.append(rowhead);
+                          }
+                          for (var i = 0; i < data.length; i++) {
+                              var row = angular.element("<tr>");
+                              for (var key in data[i]) {
+                                  row.append(angular.element("<td>").text(data[i][key]));
+                              }
+                              tbody.append(row);
+                          }
+                          table.append(thead).append(tbody);
+                          element.append(table);
+                      }
+                  }
+              }
+        })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+  <div class="container">
+    <div create-table="items"></div>
+  </div>
+</body>
+</html>
