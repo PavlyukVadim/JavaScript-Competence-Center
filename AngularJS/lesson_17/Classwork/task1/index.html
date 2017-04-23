@@ -25,19 +25,15 @@
     }
 
     function arrayToList() {
-      return function(scope, element, attr) {
-        //var arr = eval(attr[array]);
-        console.log(attr[array]);
-        if (angular.isDefined(arr)) {
-          var list = angular.element('<ul>');
-          var i;
-          element.append(list);
-          for (i = 0; i < arr.length; i++) {
-            var item = angular.element('<li>');
-            item.text(arr[i].name + ' ' + arr[i].price);
-            list.append(item);
-          }
-        }
+      return {
+        scope: {
+          items: '=arrayToList'
+        },
+        template: ` <ul>
+                      <li ng-repeat='item in items track by $index'>
+                        {{'Name: ' + item.name + ', ' + ' Price: ' + item.price}}
+                      </li>
+                    </ul>`
       }
     }
 
@@ -46,7 +42,7 @@
 <body>
   <section id="class-component" class="container" ng-controller="myController">
     <h1>arrayToListApp</h1>
-      <array-to-list array="model.items"></array-to-list>  
+      <div array-to-list="model.items"></div>  
   </section>
 </body>
 </html>
