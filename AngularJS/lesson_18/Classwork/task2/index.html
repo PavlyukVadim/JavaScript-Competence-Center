@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+      angular.module('myApp', [])
+      .directive('counterBtn', function () {
+        return {
+          restrict: 'E',
+          scope: true,
+          template: ` <div class="panel well">
+                      <input type="button" class="btn-lg btn-success" ng-click="startCounter()" ng-disabled="buttonActivated" value="Start counter">
+                      <h2>{{counter}}</h2>
+                      </div>`,
+          controller: function ($scope, $interval) {
+            var count;
+            $scope.counter = 0;
+            $scope.startCounter = function () {
+              $scope.buttonActivated = true;
+              count = $interval(function () {
+                $scope.counter++;
+              }, 1000)
+            };
+            
+            this.getCounter = function () {
+              return $scope.counter;
+            }
+          }
+        }
+      })
+      .directive('logBtn', function () {
+        return {
+          restrict: 'A',
+          require: 'counterBtn',
+          link: function (scope, elem, attr, counterBtnCtrl) {
+            scope.$watch(counterBtnCtrl.getCounter, function (value) {
+              console.log('counter: ' + value);
+            });
+          }
+        }
+      });
+  </script>
+</head>
+<body>
+  <counter-btn log-btn></counter-btn>
+</body>
+</html>
