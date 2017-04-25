@@ -1,0 +1,7 @@
+<form class="form-control input-group" name="cForm" ng-submit="submitHandler(cForm.$valid)">
+  	<div class="form-group" ng-repeat="item in model.formItems track by $index">
+    	<label for="form-item-{{$index}}">{{item.title}}</label>
+    	<input type="{{item.type}}" class="form-control" id="form-item-{{$index}}" placeholder="{{item.title}}" ng-pattern="{{item.pattern}}" required>
+  	</div>
+  	<input class="btn btn-primary" type="submit" ng-disabled="cForm.$invalid" value="Submit" >
+</form>
