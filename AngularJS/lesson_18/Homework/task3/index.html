@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+    angular.module('myApp', [])
+    .directive('dialogBox', function () {
+      return function (scope, element, attr) {
+        alert(element.text());
+      }
+    })
+  </script>
+</head>
+<body>
+  <div dialog-box>
+  	<h1>dialog-box</h1>
+  	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur iste numquam eaque quo ipsa, reiciendis vel quibusdam molestiae porro fugiat atque, libero et obcaecati assumenda ratione, labore! Reprehenderit, ipsum, iste.</p>
+  	<ul>
+  	  <li>Item 1</li>
+  	  <li>Item 2</li>
+  	</ul>
+  </div>
+</body>
+</html>

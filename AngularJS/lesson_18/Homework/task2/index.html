@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+
+    var model = {
+      items: ['Item A',
+              'Item B', 
+              'Item C', 
+              'Item D', 
+              'Item E']
+    }
+
+    angular.module('myApp', [])
+    .controller('mainController', function ($scope) {
+      $scope.model = model;
+    })
+   .directive('createList', function () {
+      return {
+        restrict: 'A',
+        priority: 1,
+        link: function (scope, element, attr) {
+          var items = scope.model.items;
+          var ul = angular.element('<ul>');
+          var i;
+          for (i = 0; i < items.length; i++) {
+            ul.append(angular.element('<li>').html(items[i]));
+          }
+          element.append(ul);
+       }
+      }
+   })
+   .directive('addStyle', function () {
+      return {
+        restrict: 'A',
+        priority: 2,
+        link: function (scope, element, attr) {
+          var i;
+          var itemsList = element.find('li');
+          for (i = 1; i < itemsList.length; i+=2) {
+            angular.element(itemsList[i]).addClass('red');
+          }
+        }
+      }
+   })
+   </script>
+   <style>
+      .red {
+        color: red;
+      }
+   </style>
+</head>
+<body ng-controller="mainController">
+  <div create-list add-style></div>
+</body>
+</html>

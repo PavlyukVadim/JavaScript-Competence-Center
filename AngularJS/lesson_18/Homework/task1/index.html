@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="../../../Libraries/bootstrap.css"/>
+  <script src="../../../Libraries/angular.js"></script>
+  <script>
+        var model = {
+            items: [
+                {name: 'Table', price: 44.10},
+                {name: 'Chair', price: 21.20},
+                {name: 'Pillow', price: 12.20},
+                {name: 'Picture', price: 112.70},
+                {name: 'Lamp', price: 28.31}
+            ]
+        }
+
+        angular.module('myApp', [])
+        .controller('mainController', function ($scope) {
+            $scope.model = model;
+            $scope.currentValue = $scope.model.items[0].price;
+            $scope.getCurrentValue = function (index) {
+                $scope.currentValue = $scope.model.items[index].price;
+            }
+        })
+        .directive('myMenu', function () {
+            return {
+                restrict: 'A',
+                template: ` <ul>
+                                <li ng-repeat='item in model.items' ng-click='getCurrentValue($index)'>
+                                    <a>{{item.name}}</a>
+                                </li>
+                            </ul>`,
+                scope: false,
+                controller: 'mainController'
+            }
+        })
+        .directive('getItems', function () {
+            return {
+                restrict: 'A',
+                template: '<p>{{currentValue}}</p>',
+                scope: false,
+                controller: 'mainController'
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mainController">
+    <div my-menu></div>
+    <div get-items></div>
+</body>
+</html>
