@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('ketApp', []);
+angular.module('ketApp', ['myHeader']);
