@@ -9,3 +9,85 @@
 }
 
 /*     --- HEADER ---     */
+header {
+  
+  nav {
+    
+    .container {
+      
+      .navbar-header {
+        height: 80px;
+        
+        .navbar-brand {
+          font-weight: bold;
+          padding-top: 30px;
+          padding-bottom: 30px;
+        }
+      }
+      .navbar-collapse {
+        background-color: #fff;
+
+        ul {
+
+          li {
+
+            a {
+              transition-duration: .2s;
+              text-transform: uppercase;
+              font-weight: bold;
+              padding-top: 30px;
+              padding-bottom: 30px;
+
+              &:hover {
+                color: $blue;
+              }
+            }
+
+            .active {
+              color: $blue;
+              border-bottom: 2px solid $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #main-screen {
+    position: relative;
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    max-height: 1200px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../images/layer.png);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    #welcome {
+      @include center(); 
+      @include translate(-50%, -80%); 
+      
+      .main-title {
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+
+      a {
+        @include link(#fff, #000, 16px, uppercase);
+        padding: 10px 20px;
+        @include border(b, 1px, #fff);
+        @include centerHorizontal();
+        @include media(mobile) {
+          width: 140px;
+        }
+        transition: 0.3s;
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
