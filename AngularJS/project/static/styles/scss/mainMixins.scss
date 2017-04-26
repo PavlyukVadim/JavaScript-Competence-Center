@@ -1,0 +1,52 @@
+@import 'transform';
+
+@mixin center() {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include translate(-50%, -50%);
+}
+
+@mixin centerVertical() {
+  display: block;
+  position: absolute;
+  top: 50%;
+  @include translate(0, -50%);
+}
+
+@mixin centerHorizontal() {
+  display: block;
+  position: absolute;
+  left: 50%;
+  @include translate(-50%, 0);
+}
+
+@mixin link($color, $hover, $size, $transform) {
+  color: $color;
+  font-size: $size;
+  text-transform: $transform;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    color: $hover !important;
+  }
+}
+
+@mixin border($side, $height, $color) {
+  @if $side == b {
+    border: $height solid $color;
+  }
+  @else if $side == bb {
+    border-bottom: $height solid $color;
+  }
+  @else if $side == bt {
+    border-top: $height solid $color;
+  }
+  @else if $side == bl {
+    border-left: $height solid $color;
+  }
+  @else if $side == br {
+    border-right: $height solid $color;
+  }
+}
