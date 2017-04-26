@@ -1,0 +1,30 @@
+<section id="about-us-component">
+	<div class="container">
+		<h2 class="component-title">{{aboutUs.model.title}}</h2>
+		<div class="blue-line"></div>
+		<p class="component-desc">{{aboutUs.model.desc}}</p>
+		<div class="row workers">
+			<div class="worker-card col-md-3 col-sm-3" ng-repeat="worker in aboutUs.model.workers">
+				<div class="content">
+					<div class="top">
+						<img ng-src="{{worker.img}}" alt="">
+						<div class="main-data">
+							<p class="worker-name">{{worker.name}}</p>
+							<p class="worker-position">{{worker.position}}</p>
+						</div>
+					</div>
+					<div class="desc">
+						<p>{{worker.desc}}</p>
+					</div>
+					<div class="icons">
+						<div class="col-xs-3" ng-repeat="socialNetwork in worker.socialNetworks" ng-class="socialNetwork.name">
+			    			<a ng-href="{{socialNetwork.link}}">
+			    				<i ng-class="'fa fa-' + socialNetwork.name" aria-hidden="true"></i>
+			    			</a>
+			    		</div>
+			    	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

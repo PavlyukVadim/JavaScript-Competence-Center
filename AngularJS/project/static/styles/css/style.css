@@ -22,6 +22,28 @@
 * {
   font-family: RalewayLight; }
 
+.component-title {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center; }
+
+.blue-line {
+  width: 150px;
+  background: #7FF0FF;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0); }
+
+.component-desc {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 16px; }
+
 /*     --- HEADER ---     */
 header nav .container .navbar-header {
   height: 80px; }
@@ -93,5 +115,53 @@ header #main-screen {
           width: 140px; } }
       header #main-screen #welcome a:hover {
         background-color: #fff; }
+
+/*   ---ABOUT US---   */
+#about-us-component .workers {
+  margin-top: 60px;
+  margin-bottom: 50px; }
+  #about-us-component .workers .worker-card .content .top {
+    position: relative; }
+    #about-us-component .workers .worker-card .content .top img {
+      width: 100%; }
+    #about-us-component .workers .worker-card .content .top .main-data {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8); }
+      #about-us-component .workers .worker-card .content .top .main-data .worker-name {
+        color: #7FF0FF;
+        font-size: 19px;
+        margin-bottom: 5px; }
+      #about-us-component .workers .worker-card .content .top .main-data .worker-position {
+        color: #fff; }
+  #about-us-component .workers .worker-card .content .desc {
+    background-color: #F7F7F7;
+    padding: 20px; }
+  #about-us-component .workers .worker-card .content .icons {
+    margin-top: 1px; }
+    #about-us-component .workers .worker-card .content .icons div {
+      text-align: center;
+      padding: 10px 0;
+      border-right: 1px solid #fff;
+      font-size: 18px;
+      background-color: #F7F7F7;
+      transition-duration: .3s; }
+      #about-us-component .workers .worker-card .content .icons div a {
+        color: #333;
+        display: block; }
+      #about-us-component .workers .worker-card .content .icons div:hover {
+        cursor: pointer; }
+        #about-us-component .workers .worker-card .content .icons div:hover a {
+          color: #fff; }
+    #about-us-component .workers .worker-card .content .icons .facebook:hover {
+      background-color: #36609E; }
+    #about-us-component .workers .worker-card .content .icons .twitter:hover {
+      background-color: #2CA9E1; }
+    #about-us-component .workers .worker-card .content .icons .google:hover {
+      background-color: #DB5442; }
+    #about-us-component .workers .worker-card .content .icons .dribbble:hover {
+      background-color: #EE558E; }
 
 /*# sourceMappingURL=style.css.map */

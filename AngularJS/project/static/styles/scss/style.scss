@@ -8,6 +8,25 @@
   font-family: RalewayLight;
 }
 
+.component-title {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.blue-line {
+  width: 150px;
+  background: $blue;
+  height: 2px;
+  @include centerHorizontal(); 
+}
+
+.component-desc {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 16px;
+}
+
 /*     --- HEADER ---     */
 header {
   
@@ -86,6 +105,90 @@ header {
         transition: 0.3s;
         &:hover {
           background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/*   ---ABOUT US---   */
+
+#about-us-component {
+  .workers {
+    margin-top: 60px;
+    margin-bottom: 50px;
+
+    .worker-card {
+
+      .content {
+        
+        .top {
+          position: relative;
+          
+          img {
+            width: 100%;
+          }
+          
+          .main-data {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, .8);
+
+            .worker-name {
+              color: $blue;
+              font-size: 19px;
+              margin-bottom: 5px;
+            }
+
+            .worker-position {
+              color: #fff;
+            }
+          }
+        }
+
+        .desc {
+          background-color: $greylight;
+          padding: 20px;
+        }
+
+        .icons {
+          margin-top: 1px;
+          
+          div {
+            text-align: center;
+            padding: 10px 0;
+            border-right: 1px solid #fff;
+            font-size: 18px;
+            background-color: $greylight;
+            transition-duration: .3s;
+
+            a {
+              color: #333;
+              display: block;
+            }
+
+            &:hover {
+              cursor: pointer;
+              a {
+                color: #fff;
+              }
+            }
+          }
+          
+          .facebook:hover {
+            background-color: $facebook; 
+          }
+          .twitter:hover {
+            background-color: $twitter; 
+          }
+          .google:hover {
+            background-color: $google; 
+          }
+          .dribbble:hover {
+            background-color: $dribbble; 
+          }
         }
       }
     }
