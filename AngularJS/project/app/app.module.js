@@ -1,4 +1,5 @@
 'use strict';
 
 angular.module('ketApp', ['myHeader',
-						  'aboutUs']);
+						  'aboutUs',
+						  'contactUs']);

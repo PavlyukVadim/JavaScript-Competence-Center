@@ -1,0 +1,32 @@
+<section id="contact-us-component">
+	<div class="container">
+		<h2 class="component-title">{{contactUs.model.title}}</h2>
+		<div class="blue-line"></div>
+		<p class="component-desc">{{contactUs.model.desc}}</p>
+		<form class="form-container" novalidate name="myForm" ng-submit="contactUs.submit()">
+			<div ng-repeat="field in contactUs.model.formFields" ng-class="field.size">
+			    <div class="form-group">
+				    <input ng-if="field.type != 'textarea'"
+				           type="{{field.type}}"
+				    	   class="form-control"
+				    	   ng-model="contactUs[field.name]"
+				    	   ng-pattern="field.pattern"
+				    	   placeholder="{{field.placeholder}}"
+				    	   required>
+				    <textarea ng-if="field.type == 'textarea'"
+				              rows="1"
+			    			  ng-model="contactUs[field.name]"
+			    	          ng-minlength="{{field.minlength}}"
+			    	          placeholder="{{field.placeholder}}"
+			    	          required>
+					</textarea>	
+				    <div class="border"></div>
+				    <div class="error-tooltip">{{field.tooltip}}</div>
+			    </div>
+			</div>
+			<div class="form-group col-md-12 submit-wrapper">
+				<button type="submit" class="btn" ng-disabled="myForm.$invalid">Send Message</button>
+			</div>
+		</form>
+	</div>
+</section>

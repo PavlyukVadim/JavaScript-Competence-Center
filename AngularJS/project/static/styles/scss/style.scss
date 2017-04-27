@@ -194,3 +194,99 @@ header {
     }
   }
 }
+
+/*   ---Contact Us---   */
+#contact-us-component {
+  color: #fff;
+  background-color: $black;
+  padding-bottom: 50px;
+
+  .form-container {
+    max-width: 768px;
+    margin: 0 auto;
+
+    .form-group {
+      position: relative;
+      margin-top: 75px;
+
+      .border {
+        position: absolute;
+        width: 100%;
+        height: 8px;
+        bottom: 0;
+      }
+
+      .error-tooltip {
+        color: #fff;
+        position: absolute;
+        display: none;
+      }
+    }
+
+    .submit-wrapper {
+      margin-top: 10px;      
+    }
+
+    input, textarea, button[type="submit"] {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+    }
+
+    input {
+      padding: 20px 28px;
+      outline: none;
+      box-shadow: none;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    textarea {
+      outline: none;
+      box-shadow: none;
+      width: 100%;
+      padding: 7px 28px;
+      resize: none;
+      overflow: auto;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    button[type="submit"] {
+      transition-duration: .3s;
+      border: 1px solid $blue;
+      border-radius: 0px;
+      padding: 6px 32px;
+      margin-left: 100%;
+      @include translate(-100%, 0);
+
+      &:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+  
+  .ng-untouched + .border, .ng-valid + .border {
+    border-bottom: 3px solid #fff;
+    border-left: 3px solid #fff;
+    border-right: 3px solid #fff;
+  }
+
+  .ng-dirty.ng-invalid + .border, .ng-touched.ng-invalid + .border{
+    border-bottom: 3px solid #f00;
+    border-left: 3px solid #f00;
+    border-right: 3px solid #f00;
+  }
+
+  .ng-dirty.ng-invalid + .border + .error-tooltip, .ng-touched.ng-invalid + .border + .error-tooltip {
+    display: block;
+  }
+
+}
