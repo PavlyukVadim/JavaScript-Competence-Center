@@ -1,0 +1,12 @@
+<article>
+	<div class="col-sm-2 article-date">
+		<p class="number">{{detail.article.date.day}}</p>
+		<p class="month">{{detail.article.date.month}}</p>
+	</div>
+	<div class="col-sm-10 article-content">
+		<div class="short-desc">
+			<p>{{detail.article.post.repeat(11)}}</p>
+		</div>
+		<a class="read-more" ng-click="detail.goToNewsList()">Back</a>
+	</div>
+</article>

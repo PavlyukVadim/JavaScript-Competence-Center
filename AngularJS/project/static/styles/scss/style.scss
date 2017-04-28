@@ -328,6 +328,10 @@ header {
           font-weight: bold;
           position: absolute;
           @include translate(0, -200%);
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }

@@ -1,0 +1,12 @@
+<article ng-repeat="article in ourNews.model.articles">
+	<div class="col-sm-2 article-date">
+		<p class="number">{{article.date.day}}</p>
+		<p class="month">{{article.date.month}}</p>
+	</div>
+	<div class="col-sm-10 article-content">
+		<div class="short-desc">
+			<p>{{article.post}}</p>
+		</div>
+		<a class="read-more" ng-click="ourNews.goToNewsById(article.id)">Read More</a>
+	</div>
+</article>

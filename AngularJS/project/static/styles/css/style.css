@@ -259,5 +259,7 @@ header #main-screen {
         -moz-transform: translate(0, -200%);
         -ms-transform: translate(0, -200%);
         transform: translate(0, -200%); }
+        #our-news-component .news-wrapper article .article-content .read-more:hover {
+          cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

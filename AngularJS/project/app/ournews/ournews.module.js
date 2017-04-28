@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('ourNews', []);
+angular.module('ourNews', ['ngRoute']);
