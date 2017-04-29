@@ -116,6 +116,25 @@ header #main-screen {
       header #main-screen #welcome a:hover {
         background-color: #fff; }
 
+/*   ---ACHIEVEMENTS---   */
+#achievements-component {
+  color: #fff;
+  background-color: #131316;
+  padding-top: 70px;
+  padding-bottom: 50px; }
+  #achievements-component .achievement {
+    text-align: center; }
+    @media only screen and (max-width: 768px) {
+      #achievements-component .achievement {
+        margin-top: 40px; } }
+    #achievements-component .achievement img {
+      margin-bottom: 25px; }
+    #achievements-component .achievement .number {
+      font-size: 40px; }
+    #achievements-component .achievement .title {
+      text-transform: uppercase;
+      font-size: 12px; }
+
 /*   ---ABOUT US---   */
 #about-us-component .workers {
   margin-top: 60px;

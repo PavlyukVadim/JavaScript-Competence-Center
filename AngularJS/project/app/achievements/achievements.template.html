@@ -1,0 +1,9 @@
+<section id="achievements-component">
+	<div class="container">
+		<div class="col-sm-3 achievement" ng-repeat="achievement in achievements.model.arrayOfAchievements">
+			<img ng-src="{{achievement.img}}" alt="">
+			<p class="number">{{achievement.number}}</p>
+			<p class="title">{{achievement.title}}</p>
+		</div>
+	</div>
+</section>

@@ -111,6 +111,36 @@ header {
   }
 }
 
+/*   ---ACHIEVEMENTS---   */
+
+#achievements-component {
+  color: #fff;
+  background-color: $black;
+  padding-top: 70px;
+  padding-bottom: 50px;
+
+  .achievement {
+    text-align: center;
+    
+    @include media(mobile) {
+      margin-top: 40px;
+    }
+
+    img {
+      margin-bottom: 25px;
+    }
+
+    .number {
+      font-size: 40px;
+    }
+
+    .title {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}
+
 /*   ---ABOUT US---   */
 
 #about-us-component {
