@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('portfolio', []);
+angular.module('portfolio', ['ngAnimate']);
