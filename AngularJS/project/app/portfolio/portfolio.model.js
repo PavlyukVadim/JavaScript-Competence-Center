@@ -19,7 +19,7 @@ var portfolioModel = {
                 title: 'Illustration'
                }],
   projects: [{
-              category: 'Graphic design',
+              category: 'Graphic Design',
               title: 'Sample image',
               img: '../../static/images/filter-1.jpg'
             },
@@ -34,12 +34,12 @@ var portfolioModel = {
               img: '../../static/images/filter-3.jpg'
             },
             {
-              category: 'Graphic design',
+              category: 'Graphic Design',
               title: 'Sample image',
               img: '../../static/images/filter-4.jpg'
             },
             {
-              category: 'Graphic design',
+              category: 'Graphic Design',
               title: 'Sample image',
               img: '../../static/images/filter-5.jpg'
             },

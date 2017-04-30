@@ -115,15 +115,22 @@ header {
 /*   ---PORTFOLIO---   */
 
 #portfolio-component {
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   
   .toolbar {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 50px;
+    text-align: center;
+
+    @include media(mobile) {
+      position: static;
+      transform: translateX(0);
+    }
 
     .btn-choose-cat {
+      display: inline-block;
       color: $black;
       font-weight: bold;
       text-transform: uppercase;
@@ -150,20 +157,33 @@ header {
   }
 
   #portfolio {
-    margin-top: 130px;
+    margin-top: 150px;
     
     .col-lg-2, .col-md-3, .col-sm-4, .col-xs-6 {
       padding-left: 0;
       padding-right: 0;
     }
 
-    @media screen and (max-width: 768px) { 
-      margin-top: 220px;
+    .ng-enter {
+      transition: .8s linear all;
+    }
+     
+    .ng-enter.ng-enter-active {
+      animation-name: zoomInUp;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+    }
+    
+    @include media(mobile) {
+      margin-top: 50px;
     }
     
     .tile {
-      transition: transform 1s;
       position: relative;
+      
+      &:hover {
+        cursor: pointer;
+      }  
 
       img {
         width: 100%;
@@ -178,7 +198,7 @@ header {
         width: 100%;
         height: 100%;
         text-transform: uppercase;
-        background-color: rgba(255, 230, 0, .55);
+        background-color: rgba(127, 240, 255, .15);
         text-align: center;
         animation-fill-mode: forwards;
         animation-name: zoomOut;
@@ -190,32 +210,21 @@ header {
           margin: 0;
           top: 47%;
           transform: translateY(-50%);
-          color: $blue;
+          color: #fff;
 
           .work-title {
-            font-size: 1.4em;
-            margin: 0; 
+            font-size: 1.7em;
+            font-weight: bold;
+            margin-bottom: 10px; 
           }
 
           .category {
             margin: 0;
-            font-family: Oswald-light;
+            font-weight: bold;
           }
         }
       }
 
-    }
-
-    .zoomInUp {
-      animation-name: zoomInUp;
-      animation-duration: .8s;
-      /*animation-fill-mode: forwards;*/
-    }
-
-    .zoomOut {
-      animation-name: zoomOut;
-      animation-duration: .8s;
-      animation-fill-mode: forwards;
     }
 
     .mouse-over {
@@ -225,8 +234,7 @@ header {
 
         .work-title {
           animation-name: zoomIn;
-          animation-duration: .5s;
-          
+          animation-duration: .5s;   
         }
       }
     }

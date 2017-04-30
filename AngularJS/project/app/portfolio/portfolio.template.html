@@ -4,14 +4,22 @@
 		<div class="blue-line"></div>
 		<p class="component-desc">{{portfolio.model.desc}}</p>
 		<div class="toolbar">
-			<a class="btn-choose-cat" ng-repeat="category in portfolio.model.categories">
+			<a class="btn-choose-cat"
+			   ng-repeat="category in portfolio.model.categories"
+			   ng-click="portfolio.changeCategory(category.title)"
+			   ng-class="{'active-btn': portfolio.selectedTab === category.title}">
 				{{category.title}}
 			</a>
 	    </div>
 	</div>
     <div id="portfolio" class="row">
-		<div class="tile col-lg-2 col-md-3 col-sm-4 col-xs-6 zoomInUp" 
-		     ng-repeat="project in portfolio.model.projects">
+		<div class="tile col-lg-2 col-md-3 col-sm-4 col-xs-6" 
+		     ng-repeat="project in portfolio.model.projects | category"
+		     ng-animate="'animate'"
+		     ng-mouseenter="portfolio.mouseEnterProject(project)"
+		     ng-mouseleave="portfolio.mouseLeaveProject(project)"
+		     ng-class="{'mouse-over': portfolio.currentOverProject === project,
+		                'mouse-out': portfolio.currentOutProject === project}">
 			<img ng-src="{{project.img}}">
 			<div class="work-desc">
 			    <div class="wrapper">

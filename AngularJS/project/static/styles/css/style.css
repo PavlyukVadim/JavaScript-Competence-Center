@@ -33,6 +33,15 @@
     transform: scale3d(0.3, 0.3, 0.3); }
   50% {
     opacity: 1; } }
+@keyframes zoomInUp {
+  from {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1); } }
 * {
   font-family: RalewayLight; }
 
@@ -132,13 +141,19 @@ header #main-screen {
 
 /*   ---PORTFOLIO---   */
 #portfolio-component {
-  padding-bottom: 50px; }
+  padding-bottom: 70px; }
   #portfolio-component .toolbar {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 50px; }
+    margin-top: 50px;
+    text-align: center; }
+    @media only screen and (max-width: 768px) {
+      #portfolio-component .toolbar {
+        position: static;
+        transform: translateX(0); } }
     #portfolio-component .toolbar .btn-choose-cat {
+      display: inline-block;
       color: #131316;
       font-weight: bold;
       text-transform: uppercase;
@@ -157,16 +172,23 @@ header #main-screen {
     #portfolio-component .toolbar .active-btn {
       border-color: #7FF0FF; }
   #portfolio-component #portfolio {
-    margin-top: 130px; }
+    margin-top: 150px; }
     #portfolio-component #portfolio .col-lg-2, #portfolio-component #portfolio .col-md-3, #portfolio-component #portfolio .col-sm-4, #portfolio-component #portfolio .col-xs-6 {
       padding-left: 0;
       padding-right: 0; }
-    @media screen and (max-width: 768px) {
+    #portfolio-component #portfolio .ng-enter {
+      transition: .8s linear all; }
+    #portfolio-component #portfolio .ng-enter.ng-enter-active {
+      animation-name: zoomInUp;
+      animation-duration: .8s;
+      animation-fill-mode: forwards; }
+    @media only screen and (max-width: 768px) {
       #portfolio-component #portfolio {
-        margin-top: 220px; } }
+        margin-top: 50px; } }
     #portfolio-component #portfolio .tile {
-      transition: transform 1s;
       position: relative; }
+      #portfolio-component #portfolio .tile:hover {
+        cursor: pointer; }
       #portfolio-component #portfolio .tile img {
         width: 100%;
         height: auto;
@@ -178,7 +200,7 @@ header #main-screen {
         width: 100%;
         height: 100%;
         text-transform: uppercase;
-        background-color: rgba(255, 230, 0, 0.55);
+        background-color: rgba(127, 240, 255, 0.15);
         text-align: center;
         animation-fill-mode: forwards;
         animation-name: zoomOut;
@@ -189,21 +211,14 @@ header #main-screen {
           margin: 0;
           top: 47%;
           transform: translateY(-50%);
-          color: #7FF0FF; }
+          color: #fff; }
           #portfolio-component #portfolio .tile .work-desc .wrapper .work-title {
-            font-size: 1.4em;
-            margin: 0; }
+            font-size: 1.7em;
+            font-weight: bold;
+            margin-bottom: 10px; }
           #portfolio-component #portfolio .tile .work-desc .wrapper .category {
             margin: 0;
-            font-family: Oswald-light; }
-    #portfolio-component #portfolio .zoomInUp {
-      animation-name: zoomInUp;
-      animation-duration: .8s;
-      /*animation-fill-mode: forwards;*/ }
-    #portfolio-component #portfolio .zoomOut {
-      animation-name: zoomOut;
-      animation-duration: .8s;
-      animation-fill-mode: forwards; }
+            font-weight: bold; }
     #portfolio-component #portfolio .mouse-over .work-desc {
       animation-name: zoomIn;
       animation-duration: .4s; }
