@@ -1,0 +1,24 @@
+<section id="portfolio-component">
+	<div class="container">
+		<h2 class="component-title">{{portfolio.model.title}}</h2>
+		<div class="blue-line"></div>
+		<p class="component-desc">{{portfolio.model.desc}}</p>
+		<div class="toolbar">
+			<a class="btn-choose-cat" ng-repeat="category in portfolio.model.categories">
+				{{category.title}}
+			</a>
+	    </div>
+	</div>
+    <div id="portfolio" class="row">
+		<div class="tile col-lg-2 col-md-3 col-sm-4 col-xs-6 zoomInUp" 
+		     ng-repeat="project in portfolio.model.projects">
+			<img ng-src="{{project.img}}">
+			<div class="work-desc">
+			    <div class="wrapper">
+		  			<h3 class="work-title">{{project.title}}</h3>
+		  			<p class="category">{{project.category}}</p>
+		  		</div>
+			</div>
+		</div>
+    </div>
+</section>

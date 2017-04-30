@@ -19,6 +19,20 @@
 @font-face {
   font-family: "RalewayThin";
   src: url("../../fonts/Raleway/RalewayThin.ttf") format("truetype"); }
+@keyframes zoomOut {
+  from {
+    opacity: 1; }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  to {
+    opacity: 0; } }
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
 * {
   font-family: RalewayLight; }
 
@@ -115,6 +129,90 @@ header #main-screen {
           width: 140px; } }
       header #main-screen #welcome a:hover {
         background-color: #fff; }
+
+/*   ---PORTFOLIO---   */
+#portfolio-component {
+  padding-bottom: 50px; }
+  #portfolio-component .toolbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px; }
+    #portfolio-component .toolbar .btn-choose-cat {
+      color: #131316;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px;
+      border: 1px solid transparent;
+      margin: 0 5px;
+      text-decoration: none; }
+      #portfolio-component .toolbar .btn-choose-cat:hover {
+        border-color: #7FF0FF;
+        transition: .1s;
+        cursor: pointer; }
+      @media screen and (max-width: 768px) {
+        #portfolio-component .toolbar .btn-choose-cat {
+          text-align: center;
+          display: block; } }
+    #portfolio-component .toolbar .active-btn {
+      border-color: #7FF0FF; }
+  #portfolio-component #portfolio {
+    margin-top: 130px; }
+    #portfolio-component #portfolio .col-lg-2, #portfolio-component #portfolio .col-md-3, #portfolio-component #portfolio .col-sm-4, #portfolio-component #portfolio .col-xs-6 {
+      padding-left: 0;
+      padding-right: 0; }
+    @media screen and (max-width: 768px) {
+      #portfolio-component #portfolio {
+        margin-top: 220px; } }
+    #portfolio-component #portfolio .tile {
+      transition: transform 1s;
+      position: relative; }
+      #portfolio-component #portfolio .tile img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle; }
+      #portfolio-component #portfolio .tile .work-desc {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+        background-color: rgba(255, 230, 0, 0.55);
+        text-align: center;
+        animation-fill-mode: forwards;
+        animation-name: zoomOut;
+        animation-duration: 0s; }
+        #portfolio-component #portfolio .tile .work-desc .wrapper {
+          position: absolute;
+          width: 100%;
+          margin: 0;
+          top: 47%;
+          transform: translateY(-50%);
+          color: #7FF0FF; }
+          #portfolio-component #portfolio .tile .work-desc .wrapper .work-title {
+            font-size: 1.4em;
+            margin: 0; }
+          #portfolio-component #portfolio .tile .work-desc .wrapper .category {
+            margin: 0;
+            font-family: Oswald-light; }
+    #portfolio-component #portfolio .zoomInUp {
+      animation-name: zoomInUp;
+      animation-duration: .8s;
+      /*animation-fill-mode: forwards;*/ }
+    #portfolio-component #portfolio .zoomOut {
+      animation-name: zoomOut;
+      animation-duration: .8s;
+      animation-fill-mode: forwards; }
+    #portfolio-component #portfolio .mouse-over .work-desc {
+      animation-name: zoomIn;
+      animation-duration: .4s; }
+      #portfolio-component #portfolio .mouse-over .work-desc .work-title {
+        animation-name: zoomIn;
+        animation-duration: .5s; }
+    #portfolio-component #portfolio .mouse-out .work-desc {
+      animation-name: zoomOut;
+      animation-duration: .4s; }
 
 /*   ---ACHIEVEMENTS---   */
 #achievements-component {

@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'fontface';
 @import 'mainMixins';
+@import 'animations';
 @import 'mediaQueries';
 @import 'transform';
 
@@ -109,6 +110,134 @@ header {
       }
     }
   }
+}
+
+/*   ---PORTFOLIO---   */
+
+#portfolio-component {
+  padding-bottom: 50px;
+  
+  .toolbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+
+    .btn-choose-cat {
+      color: $black;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 10px;
+      border: 1px solid transparent;
+      margin: 0 5px;
+      text-decoration: none;
+
+      &:hover {
+        border-color: $blue;
+        transition: .1s;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 768px) { 
+        text-align: center;
+        display: block;  
+      }
+    }
+
+    .active-btn {
+      border-color: $blue;
+    }
+  }
+
+  #portfolio {
+    margin-top: 130px;
+    
+    .col-lg-2, .col-md-3, .col-sm-4, .col-xs-6 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @media screen and (max-width: 768px) { 
+      margin-top: 220px;
+    }
+    
+    .tile {
+      transition: transform 1s;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      .work-desc {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+        background-color: rgba(255, 230, 0, .55);
+        text-align: center;
+        animation-fill-mode: forwards;
+        animation-name: zoomOut;
+        animation-duration: 0s;
+
+        .wrapper {
+          position: absolute;
+          width: 100%;
+          margin: 0;
+          top: 47%;
+          transform: translateY(-50%);
+          color: $blue;
+
+          .work-title {
+            font-size: 1.4em;
+            margin: 0; 
+          }
+
+          .category {
+            margin: 0;
+            font-family: Oswald-light;
+          }
+        }
+      }
+
+    }
+
+    .zoomInUp {
+      animation-name: zoomInUp;
+      animation-duration: .8s;
+      /*animation-fill-mode: forwards;*/
+    }
+
+    .zoomOut {
+      animation-name: zoomOut;
+      animation-duration: .8s;
+      animation-fill-mode: forwards;
+    }
+
+    .mouse-over {
+      .work-desc {
+        animation-name: zoomIn;
+        animation-duration: .4s;
+
+        .work-title {
+          animation-name: zoomIn;
+          animation-duration: .5s;
+          
+        }
+      }
+    }
+
+    .mouse-out {
+      .work-desc {
+        animation-name: zoomOut;
+        animation-duration: .4s;
+      }
+    }
+  } 
 }
 
 /*   ---ACHIEVEMENTS---   */
