@@ -194,12 +194,21 @@ header #main-screen {
       #our-services-component #fully-responsive .container img {
         float: right;
         margin-right: 50px; }
+        @media only screen and (max-width: 768px) {
+          #our-services-component #fully-responsive .container img {
+            width: 100%;
+            float: none;
+            display: block;
+            margin: 0 auto; } }
       #our-services-component #fully-responsive .container h2 {
         font-size: 40px;
         margin-bottom: 40px; }
       #our-services-component #fully-responsive .container p {
         font-size: 16px;
         margin-bottom: 35px; }
+        @media only screen and (max-width: 768px) {
+          #our-services-component #fully-responsive .container p {
+            margin-bottom: 25px; } }
       #our-services-component #fully-responsive .container a {
         color: #7FF0FF;
         font-size: 16px;
@@ -207,6 +216,7 @@ header #main-screen {
         cursor: pointer;
         text-decoration: none;
         border: 1px solid #7FF0FF;
+        text-align: center;
         font-weight: bold;
         padding: 10px 40px;
         transition: 0.3s; }
@@ -214,6 +224,13 @@ header #main-screen {
           color: #7FF0FF !important; }
         @media only screen and (max-width: 768px) {
           #our-services-component #fully-responsive .container a {
+            display: block;
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0);
+            -moz-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
             width: 140px; } }
         #our-services-component #fully-responsive .container a:hover {
           background-color: #fff; }

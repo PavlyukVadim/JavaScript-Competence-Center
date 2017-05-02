@@ -210,6 +210,13 @@ header {
       img {
         float: right;
         margin-right: 50px;
+
+        @include media(mobile) {
+          width: 100%;
+          float: none;
+          display: block;
+          margin: 0 auto;          
+        }
       }
 
       h2 {
@@ -220,21 +227,25 @@ header {
       p {
         font-size: 16px;
         margin-bottom: 35px;
+
+        @include media(mobile) {
+          margin-bottom: 25px;          
+        }
       }
 
       a {
         @include link($blue, $blue, 16px, uppercase);
         @include border(b, 1px, $blue);
+        text-align: center;
         font-weight: bold;
         padding: 10px 40px;
         transition: 0.3s;
 
         @include media(mobile) {
+          @include centerHorizontal();
           width: 140px;
         }
         
-        
-
         &:hover {
           background-color: #fff;
         }  
