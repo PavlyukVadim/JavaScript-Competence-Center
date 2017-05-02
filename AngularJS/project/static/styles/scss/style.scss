@@ -112,6 +112,138 @@ header {
   }
 }
 
+/*   ---OUR-SERVICES---   */
+
+#our-services-component {
+  margin-top: 75px;
+
+  #our-services-wrapper{
+
+    #our-services-images {
+
+      .our-service {
+        text-align: center;
+        
+        &:hover {
+          cursor: pointer;
+        }
+
+        img {
+          height: 60px;
+        }
+
+        .title {
+          margin-top: 30px;
+          text-transform: uppercase;
+          font-weight: bold;
+
+          @include media(mobile) {
+            margin-top: 15px;
+            margin-bottom: 40px;
+          }
+        }
+
+        .square {
+          margin: 0 auto;
+          margin-top: 15px;
+          width: 60px;
+          height: 60px;
+          border-top: 3px solid $blue;
+          border-bottom: 3px solid $blue;
+          margin-bottom: -2px;
+
+          @include media(mobile) {
+            display: none;
+          }
+        }
+
+        &:first-child {
+          
+          .square {
+            border-left: 3px solid #fff !important;
+          }
+        }
+
+        &:last-child {
+          
+          .square {
+            border-right: 3px solid #fff !important;
+          }
+        }
+      }
+      
+      .active {
+
+        .square {
+          border-left: 3px solid $blue;
+          border-right: 3px solid $blue;
+          border-bottom: 3px solid #fff;
+        } 
+      }
+    }
+
+    .border-bottom {
+      border-bottom: 3px solid $blue;
+      margin: 0 12.5%;
+      z-index: -1;
+    }
+
+    #our-services-description {
+      margin: 15px 12.5%;
+
+      .desc {
+        padding: 10px 15px;
+        margin-bottom: 75px;
+      }
+    }
+  }
+
+  #fully-responsive {
+    background-color: $greylight;
+    width: 100%;
+    padding-top: 75px;
+    padding-bottom: 75px;
+
+    .container {
+      max-width: 992px;
+
+      img {
+        float: right;
+        margin-right: 50px;
+      }
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 35px;
+      }
+
+      a {
+        @include link($blue, $blue, 16px, uppercase);
+        @include border(b, 1px, $blue);
+        font-weight: bold;
+        padding: 10px 40px;
+        transition: 0.3s;
+
+        @include media(mobile) {
+          width: 140px;
+        }
+        
+        
+
+        &:hover {
+          background-color: #fff;
+        }  
+      }
+    }
+  }
+}
+
+
 /*   ---PORTFOLIO---   */
 
 #portfolio-component {

@@ -139,6 +139,85 @@ header #main-screen {
       header #main-screen #welcome a:hover {
         background-color: #fff; }
 
+/*   ---OUR-SERVICES---   */
+#our-services-component {
+  margin-top: 75px; }
+  #our-services-component #our-services-wrapper #our-services-images .our-service {
+    text-align: center; }
+    #our-services-component #our-services-wrapper #our-services-images .our-service:hover {
+      cursor: pointer; }
+    #our-services-component #our-services-wrapper #our-services-images .our-service img {
+      height: 60px; }
+    #our-services-component #our-services-wrapper #our-services-images .our-service .title {
+      margin-top: 30px;
+      text-transform: uppercase;
+      font-weight: bold; }
+      @media only screen and (max-width: 768px) {
+        #our-services-component #our-services-wrapper #our-services-images .our-service .title {
+          margin-top: 15px;
+          margin-bottom: 40px; } }
+    #our-services-component #our-services-wrapper #our-services-images .our-service .square {
+      margin: 0 auto;
+      margin-top: 15px;
+      width: 60px;
+      height: 60px;
+      border-top: 3px solid #7FF0FF;
+      border-bottom: 3px solid #7FF0FF;
+      margin-bottom: -2px; }
+      @media only screen and (max-width: 768px) {
+        #our-services-component #our-services-wrapper #our-services-images .our-service .square {
+          display: none; } }
+    #our-services-component #our-services-wrapper #our-services-images .our-service:first-child .square {
+      border-left: 3px solid #fff !important; }
+    #our-services-component #our-services-wrapper #our-services-images .our-service:last-child .square {
+      border-right: 3px solid #fff !important; }
+  #our-services-component #our-services-wrapper #our-services-images .active .square {
+    border-left: 3px solid #7FF0FF;
+    border-right: 3px solid #7FF0FF;
+    border-bottom: 3px solid #fff; }
+  #our-services-component #our-services-wrapper .border-bottom {
+    border-bottom: 3px solid #7FF0FF;
+    margin: 0 12.5%;
+    z-index: -1; }
+  #our-services-component #our-services-wrapper #our-services-description {
+    margin: 15px 12.5%; }
+    #our-services-component #our-services-wrapper #our-services-description .desc {
+      padding: 10px 15px;
+      margin-bottom: 75px; }
+  #our-services-component #fully-responsive {
+    background-color: #F7F7F7;
+    width: 100%;
+    padding-top: 75px;
+    padding-bottom: 75px; }
+    #our-services-component #fully-responsive .container {
+      max-width: 992px; }
+      #our-services-component #fully-responsive .container img {
+        float: right;
+        margin-right: 50px; }
+      #our-services-component #fully-responsive .container h2 {
+        font-size: 40px;
+        margin-bottom: 40px; }
+      #our-services-component #fully-responsive .container p {
+        font-size: 16px;
+        margin-bottom: 35px; }
+      #our-services-component #fully-responsive .container a {
+        color: #7FF0FF;
+        font-size: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        border: 1px solid #7FF0FF;
+        font-weight: bold;
+        padding: 10px 40px;
+        transition: 0.3s; }
+        #our-services-component #fully-responsive .container a:hover {
+          color: #7FF0FF !important; }
+        @media only screen and (max-width: 768px) {
+          #our-services-component #fully-responsive .container a {
+            width: 140px; } }
+        #our-services-component #fully-responsive .container a:hover {
+          background-color: #fff; }
+
 /*   ---PORTFOLIO---   */
 #portfolio-component {
   padding-bottom: 70px; }
