@@ -40,8 +40,12 @@ header {
         
         .navbar-brand {
           font-weight: bold;
-          padding-top: 30px;
-          padding-bottom: 30px;
+          text-align: center;
+          letter-spacing: 0.2em;
+          
+          img {
+            margin-bottom: 3px;
+          }
         }
       }
       .navbar-collapse {
@@ -243,7 +247,6 @@ header {
 
         @include media(mobile) {
           @include centerHorizontal();
-          width: 140px;
         }
         
         &:hover {

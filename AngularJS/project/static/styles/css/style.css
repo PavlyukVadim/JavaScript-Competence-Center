@@ -72,8 +72,10 @@ header nav .container .navbar-header {
   height: 80px; }
   header nav .container .navbar-header .navbar-brand {
     font-weight: bold;
-    padding-top: 30px;
-    padding-bottom: 30px; }
+    text-align: center;
+    letter-spacing: 0.2em; }
+    header nav .container .navbar-header .navbar-brand img {
+      margin-bottom: 3px; }
 header nav .container .navbar-collapse {
   background-color: #fff; }
   header nav .container .navbar-collapse ul li a {
@@ -230,8 +232,7 @@ header #main-screen {
             -webkit-transform: translate(-50%, 0);
             -moz-transform: translate(-50%, 0);
             -ms-transform: translate(-50%, 0);
-            transform: translate(-50%, 0);
-            width: 140px; } }
+            transform: translate(-50%, 0); } }
         #our-services-component #fully-responsive .container a:hover {
           background-color: #fff; }
 
