@@ -42,7 +42,7 @@ header {
           font-weight: bold;
           text-align: center;
           letter-spacing: 0.2em;
-          
+
           img {
             margin-bottom: 3px;
           }
@@ -304,6 +304,8 @@ header {
 
   #portfolio {
     margin-top: 150px;
+    margin-left: 0;
+    margin-right: 0;
     
     .col-lg-2, .col-md-3, .col-sm-4, .col-xs-6 {
       padding-left: 0;
@@ -432,6 +434,10 @@ header {
     margin-bottom: 50px;
 
     .worker-card {
+
+      @include media(mobile) {
+        margin-bottom: 75px;
+      }
 
       .content {
         
@@ -576,8 +582,7 @@ header {
       border: 1px solid $blue;
       border-radius: 0px;
       padding: 6px 32px;
-      margin-left: 100%;
-      @include translate(-100%, 0);
+      float: right;
 
       &:hover {
         background-color: #fff;

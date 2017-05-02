@@ -269,7 +269,9 @@ header #main-screen {
     #portfolio-component .toolbar .active-btn {
       border-color: #7FF0FF; }
   #portfolio-component #portfolio {
-    margin-top: 150px; }
+    margin-top: 150px;
+    margin-left: 0;
+    margin-right: 0; }
     #portfolio-component #portfolio .col-lg-2, #portfolio-component #portfolio .col-md-3, #portfolio-component #portfolio .col-sm-4, #portfolio-component #portfolio .col-xs-6 {
       padding-left: 0;
       padding-right: 0; }
@@ -349,6 +351,9 @@ header #main-screen {
 #about-us-component .workers {
   margin-top: 60px;
   margin-bottom: 50px; }
+  @media only screen and (max-width: 768px) {
+    #about-us-component .workers .worker-card {
+      margin-bottom: 75px; } }
   #about-us-component .workers .worker-card .content .top {
     position: relative; }
     #about-us-component .workers .worker-card .content .top img {
@@ -441,11 +446,7 @@ header #main-screen {
       border: 1px solid #7FF0FF;
       border-radius: 0px;
       padding: 6px 32px;
-      margin-left: 100%;
-      -webkit-transform: translate(-100%, 0);
-      -moz-transform: translate(-100%, 0);
-      -ms-transform: translate(-100%, 0);
-      transform: translate(-100%, 0); }
+      float: right; }
       #contact-us-component .form-container button[type="submit"]:hover {
         background-color: #fff;
         color: #000; }
