@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('ketApp', ['myHeader',
+angular.module('ketApp', ['duScroll',
+													'myHeader',
 													'ourServices',
 													'portfolio',
 													'achievements',
