@@ -1,0 +1,335 @@
+#all_cont {
+	font-family: 'Montserrat';
+}
+
+#header a {
+	color: #FFF;
+}
+
+#header a:hover {
+	color: #17CFAB;
+}
+
+#header {
+	background-color: #48473F;
+}
+
+#bs-example-navbar-collapse-1 span {
+	font-size: 11px;
+}
+
+#r_butt {
+	position: absolute;
+    left: 82%;
+    top: 47%;
+    z-index: 10;
+}
+
+#l_butt {
+	position: absolute;
+    right: 82%;
+    top: 47%;
+    z-index: 10;
+}
+
+.slider {
+  width: 100%;
+  color: #FFF;
+  background: #161616;
+}
+
+#slider {
+	position: relative;
+}
+
+#slide_caption {
+	height: 100%;
+	padding-top: 6%;
+}
+
+#slide_caption h1 {
+	margin: 0;
+}
+
+#slide_caption span {
+	color: #17CFAB;
+}
+
+#slide_caption div {
+	font-size: 1vw;
+}
+
+#slide_caption h4 {
+	font-size: 1.5vw;
+}
+
+.btn {
+	background-color: transparent;
+}
+
+.btn:hover {
+	background-color: #17CFAB;
+	color: white;
+}
+
+.butt {
+	background-color: #00CBF5;
+	color: #FFF;
+	display: inline-block;
+	margin: 10px 5px 0 5px;
+	border-radius: 2px;
+	cursor: pointer;
+	border-top: 2px solid white;
+}
+
+#inslide {
+	color: #FFF;
+	text-align: center;
+	background-color: rgba(19, 19, 21, 0.3);
+	position: absolute;
+	top: 32%;
+	width: 100%;
+	height: 38%;
+}
+
+#slogan {
+	font-weight: 100;
+}
+
+.arr {
+	padding-top: 12%;
+}
+
+#up {
+	background-color: #17CFAB;
+	padding: 5px;
+}
+
+.odd {
+	background-color: #1B2933;
+	color: #17CFAB;
+	border-top: 5px solid ;
+	padding: 40px 0;
+}
+
+.even {
+	background-color: #17CFAB;
+	border-top: 5px solid ;
+	padding: 40px 0;
+}
+
+.center{
+	text-align: center;
+}
+
+.horiz_menu div {
+	padding: 20px 5px;
+	margin: 10px 0;
+	border: 1px solid #17CFAB;
+}
+
+.horiz_menu span {
+	padding: 0;
+}
+
+.horiz_menu div:hover {
+	background-color: #17CFAB;
+	cursor: pointer;
+}
+
+.green {
+	background-color: #E3FCF7;
+}
+
+#gallery div{
+	padding: 0;
+	margin: 0;
+}
+
+.valid{
+	color: white;
+}
+.error {
+    color: red; 
+    font-weight: bold; 
+}
+textarea {
+    resize: none;
+}
+
+iframe{
+	width: 100%;
+}
+
+#submitt{
+	width: 100%;
+}
+
+.container-fluid{
+	padding: 0;
+}
+
+h1 {
+	font-size: 3vw;
+}
+
+#footer{
+	background-color: #21353F;
+	text-align: center;
+	color: #FFF;
+}
+
+.row {
+	margin: 0;
+}
+
+#up_foot {
+	background-color: #222;
+}
+
+#info {
+	background-color: #00E0FF;
+	margin: 80px 0;
+}
+
+#up_arr {
+	border-radius: 10px;
+	width: 20px;
+	height: 20px;
+}
+
+.services {
+	text-align: center;
+	padding: 50px 0;
+}
+
+#services hr {
+	height: 2px;
+	background-color: #00E0FF;
+	border: none;
+	margin: 40px 0;
+}
+
+#getnow {
+	background-color: #F6F6F6;
+}
+
+#start div {
+	border: 1px solid;
+	margin-bottom: 50px;
+}
+
+.text_left {
+	text-align: left;
+}
+
+.black {
+	color: #000;
+}
+
+#filter {
+	margin: 30px 0;
+}
+
+#filter h5 {
+	border: 1px solid #FFF;
+	padding: 10px 0;
+	font-size: 1.5vw;
+}
+
+#filter h5:hover {
+	cursor: pointer;
+	border-color: #00E0FF;
+}
+
+.mask {
+	background-color: rgba(0, 224, 255, 0.5);
+	width:100%;
+	height:100%;
+	position: absolute;
+	visibility: hidden;
+}
+.mask > span {
+	color: #FFF;
+	position: relative;
+	top: 40%;
+	font-size: 1.8vw;
+}
+
+
+#statistic h3 {
+	color: white;
+}
+
+#statistic img {
+	padding: 20px;
+	border: 1px solid;
+	border-radius: 100px;
+}
+
+#teammates {
+	margin-top: 50px;
+	font-weight: 100;
+}
+
+#teammates h4 {
+	margin: 5px 0 0;
+	color: white;
+}
+
+#teammates > div {
+	background-color: #2D495B;
+	border-right: 20px solid white;
+	padding: 0;
+	color: #17CFAB;
+}
+
+#teammates a>img {
+	padding: 0;
+	border: 1px solid white;
+	margin-bottom: 2px;
+	margin-top: 20px;
+}
+
+#teammates a>img:hover {
+	background-color: #17CFAB;
+}
+
+#teammates a {
+	display: inline-block;
+}
+
+#teammates div>img {
+	margin-bottom: 20px;
+}
+
+#contacts {
+	background-color: #121215;
+	color: #FFF;
+}
+
+#form_inputs input {
+	background-color: #131315;
+	border-radius: 0;
+	border-bottom: 2px solid white;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	color: white;
+}
+
+#form_inputs span {
+	color: #00E0FF;
+}
+
+.soc {
+	float: left;
+}
+
+.map-row {
+	background-color: rgb(158, 158, 158);
+}
+
+.map-row > .col-md-5 {
+	background-color: #fff;
+}
