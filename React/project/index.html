@@ -1,141 +1,141 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="PortfApp"> 
-<head> 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio Ham</title>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="styles/main.css">
-</head> 
-<body>
-<div class="container-fluid" id="all_cont">
-  <nav class="navbar navbar-fixed-top navbar-default header" id='header'>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-1">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand img-fluid" href="#" style='padding-top: 9px'><img src="images/logo.fw.png"><span> the<b style='color: #17CFAB;'>Ham</b></span></a>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="PortfApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Ham</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+  </head>
+  <body>
+    <div class="container-fluid" id="all_cont">
+      <nav class="navbar navbar-fixed-top navbar-default header" id='header'>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-2 col-lg-offset-1">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand img-fluid" href="#" style='padding-top: 9px'><img src="images/logo.fw.png"><span> the<b style='color: #17CFAB;'>Ham</b></span></a>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-right navbar-nav ">
+                  <li><a class="nav-link" href="#home_anch"><span>HOME</span></a></li>
+                  <li><a class="nav-link" href="#about_anch"><span>ABOUT</span></a></li>
+                  <li><a class="nav-link" href="#skills_anch"><span>SKILLS</span></a></li>
+                  <li><a class="nav-link" href="#serv_anch"><span>SERVICE</span></a></li>
+                  <li><a class="nav-link" href="#work_anch"><span>WORK</span></a></li>
+                  <li><a class="nav-link" href="#test_anch"><span>TESTIMONIAL</span></a></li>
+                  <li><a class="nav-link" href="#blog_anch"><span>BLOG</span></a></li>
+                  <li><a class="nav-link" href="#team_anch"><span>TEAM</span></a></li>
+                  <li><a class="nav-link" href="#cont_anch"><span>CONTACT</span></a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-lg-7">
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-right navbar-nav ">
-              <li><a class="nav-link" href="#home_anch"><span>HOME</span></a></li>
-              <li><a class="nav-link" href="#about_anch"><span>ABOUT</span></a></li>
-              <li><a class="nav-link" href="#skills_anch"><span>SKILLS</span></a></li>
-              <li><a class="nav-link" href="#serv_anch"><span>SERVICE</span></a></li>
-              <li><a class="nav-link" href="#work_anch"><span>WORK</span></a></li>
-              <li><a class="nav-link" href="#test_anch"><span>TESTIMONIAL</span></a></li>
-              <li><a class="nav-link" href="#blog_anch"><span>BLOG</span></a></li>
-              <li><a class="nav-link" href="#team_anch"><span>TEAM</span></a></li>
-              <li><a class="nav-link" href="#cont_anch"><span>CONTACT</span></a></li>
-            </ul>
+      </nav>
+      <a name="home_anch" id="home_anch"></a>
+      <div id="slider"></div>
+      <div class="center" id="services">
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 odd">
+            <img src="images/pers.fw.png"><br><br>
+            <h5>PERSONALIZED OPTIONS</h5>
+          </div>
+          <div class="col-sm-3 col-xs-6 even">
+            <img src="images/full.fw.png"><br><br>
+            <h5>FULLY CUSTOMIZABLE</h5>
+          </div>
+          <div class="col-sm-3 col-xs-6 odd">
+            <img src="images/supp.fw.png"><br><br>
+            <h5>UNLIMMITED SUPPORT</h5>
+          </div>
+          <div class="col-sm-3 col-xs-6 even">
+            <img src="images/resp.fw.png"><br><br>
+            <h5>RESPONSIVE ALL DEVICE</h5>
+          </div>
+        </div>
+      </div>
+      <a name="serv_anch" id="serv_anch"></a>
+      <div id="our_serv"></div>
+      <a name="work_anch" id="work_anch"></a>
+      <div id="portfolio" class="green"></div>
+      <a name="team_anch" id="team_anch"></a>
+      <div class="services" id="team">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+            <h2>Meet Our Team</h2>
+            <img src="images/underline.fw.png"><br><br>
+          </div>
+        </div>
+        <div class="row" id="teammates">
+          <div class="col-sm-2 col-sm-offset-2 col-xs-4 col-xs-offset-2">
+            <img class="img-responsive" src="images/worker1.jpg">
+            <h4>Al Masum</h4>
+            <span>Founder</span><br>
+            <a><img class="img-fluid" src="images/f.fw.png"></a>
+            <a><img class="img-fluid" src="images/t.fw.png"></a>
+            <a><img class="img-fluid" src="images/g.fw.png"></a>
+            <a><img class="img-fluid" src="images/d.fw.png"></a>
+          </div>
+          <div class="col-sm-2 col-sm-offset-0 col-xs-4">
+            <img class="img-responsive" src="images/worker2.jpg">
+            <h4>Mis Liza</h4>
+            <span>UX Designer</span><br>
+            <a><img class="img-fluid" src="images/f.fw.png"></a>
+            <a><img class="img-fluid" src="images/t.fw.png"></a>
+            <a><img class="img-fluid" src="images/g.fw.png"></a>
+            <a><img class="img-fluid" src="images/d.fw.png"></a>
+          </div>
+          <div class="col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-2">
+            <img class="img-responsive" src="images/worker3.jpg">
+            <h4>Hasan Mamud</h4>
+            <span>Web Designer</span><br>
+            <a><img class="img-fluid" src="images/f.fw.png"></a>
+            <a><img class="img-fluid" src="images/t.fw.png"></a>
+            <a><img class="img-fluid" src="images/g.fw.png"></a>
+            <a><img class="img-fluid" src="images/d.fw.png"></a>
+          </div>
+          <div class="col-sm-2 col-sm-offset-0 col-xs-4">
+            <img class="img-responsive" src="images/worker4.jpg">
+            <h4>Afifa Jannat</h4>
+            <span>Web Designer</span><br>
+            <a><img class="img-fluid" src="images/f.fw.png"></a>
+            <a><img class="img-fluid" src="images/t.fw.png"></a>
+            <a><img class="img-fluid" src="images/g.fw.png"></a>
+            <a><img class="img-fluid" src="images/d.fw.png"></a>
+          </div>
+        </div>
+      </div>
+      <a name="test_anch" id="test_anch"></a>
+      <div id="statistics" class="services"></div>
+      <a name="cont_anch" id="cont_anch"></a>
+      <div id="my_form" class="services"></div>
+      <div id="footer" class="services">
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <span>Copyright 2015 <span style="color: #17CFAB;">theHum</span> | All rights reserved.</span>
+            <a href="#home_anch"><div id="up" class="butt"><img src="images/up_arr.fw.png"></div></a>
           </div>
         </div>
       </div>
     </div>
-  </nav>
-<a name="home_anch" id="home_anch"></a>
-<div id="slider"></div>
-<div class="center" id="services">
-  <div class="row">
-    <div class="col-sm-3 col-xs-6 odd">
-      <img src="images/pers.fw.png"><br><br>
-      <h5>PERSONALIZED OPTIONS</h5>
-    </div>
-    <div class="col-sm-3 col-xs-6 even">
-      <img src="images/full.fw.png"><br><br>
-      <h5>FULLY CUSTOMIZABLE</h5>
-    </div>
-    <div class="col-sm-3 col-xs-6 odd">
-      <img src="images/supp.fw.png"><br><br>
-      <h5>UNLIMMITED SUPPORT</h5>
-    </div>
-    <div class="col-sm-3 col-xs-6 even">
-      <img src="images/resp.fw.png"><br><br>
-      <h5>RESPONSIVE ALL DEVICE</h5>
-    </div>
-  </div>
-</div>
-<a name="serv_anch" id="serv_anch"></a>
-<div id="our_serv"></div>
-<a name="work_anch" id="work_anch"></a>
-<div id="portfolio" class="green"></div>
-<a name="team_anch" id="team_anch"></a>
-<div class="services" id="team">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-          <h2>Meet Our Team</h2>
-          <img src="images/underline.fw.png"><br><br>
-        </div>
-      </div>
-      <div class="row" id="teammates">
-        <div class="col-sm-2 col-sm-offset-2 col-xs-4 col-xs-offset-2">
-          <img class="img-responsive" src="images/worker1.jpg">
-          <h4>Al Masum</h4>
-          <span>Founder</span><br>
-          <a><img class="img-fluid" src="images/f.fw.png"></a>
-          <a><img class="img-fluid" src="images/t.fw.png"></a>
-          <a><img class="img-fluid" src="images/g.fw.png"></a>
-          <a><img class="img-fluid" src="images/d.fw.png"></a>
-        </div>
-        <div class="col-sm-2 col-sm-offset-0 col-xs-4">
-          <img class="img-responsive" src="images/worker2.jpg">
-          <h4>Mis Liza</h4>
-          <span>UX Designer</span><br>
-          <a><img class="img-fluid" src="images/f.fw.png"></a>
-          <a><img class="img-fluid" src="images/t.fw.png"></a>
-          <a><img class="img-fluid" src="images/g.fw.png"></a>
-          <a><img class="img-fluid" src="images/d.fw.png"></a>
-        </div>
-        <div class="col-sm-2 col-sm-offset-0 col-xs-4 col-xs-offset-2">
-          <img class="img-responsive" src="images/worker3.jpg">
-          <h4>Hasan Mamud</h4>
-          <span>Web Designer</span><br>
-          <a><img class="img-fluid" src="images/f.fw.png"></a>
-          <a><img class="img-fluid" src="images/t.fw.png"></a>
-          <a><img class="img-fluid" src="images/g.fw.png"></a>
-          <a><img class="img-fluid" src="images/d.fw.png"></a>
-        </div>
-        <div class="col-sm-2 col-sm-offset-0 col-xs-4">
-          <img class="img-responsive" src="images/worker4.jpg">
-          <h4>Afifa Jannat</h4>
-          <span>Web Designer</span><br>
-          <a><img class="img-fluid" src="images/f.fw.png"></a>
-          <a><img class="img-fluid" src="images/t.fw.png"></a>
-          <a><img class="img-fluid" src="images/g.fw.png"></a>
-          <a><img class="img-fluid" src="images/d.fw.png"></a>
-        </div>
-      </div>
-</div>
-<a name="test_anch" id="test_anch"></a>
-<div id="statistics" class="services"></div>
-<a name="cont_anch" id="cont_anch"></a>
-<div id="my_form" class="services"></div>
-<div id="footer" class="services">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <span>Copyright 2015 <span style="color: #17CFAB;">theHum</span> | All rights reserved.</span>
-      <a href="#home_anch"><div id="up" class="butt"><img src="images/up_arr.fw.png"></div></a>
-    </div>
-  </div>
-</div>
-</div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/js/slider.js"></script>
-  <script type="text/javascript" src="scripts/js/services.js"></script>
-  <script type="text/javascript" src="scripts/js/form.js"></script>
-  <script type="text/javascript" src="scripts/js/portfolio.js"></script>
-  <script type="text/javascript" src="scripts/js/stata.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/js/slider.js"></script>
+    <script type="text/javascript" src="scripts/js/services.js"></script>
+    <script type="text/javascript" src="scripts/js/form.js"></script>
+    <script type="text/javascript" src="scripts/js/portfolio.js"></script>
+    <script type="text/javascript" src="scripts/js/stata.js"></script>
+  </body>
 </html>
